@@ -225,7 +225,7 @@ img{max-width:100%;display:block}
 .mock-msg{font-size:.6rem;color:var(--muted);padding:2px 6px;background:var(--card);border-radius:4px}
 .mock-msg .name{color:var(--primary);font-weight:600}
 .mock-buy-bar{display:flex;gap:6px;margin-top:8px}
-.mock-buy-btn{flex:1;padding:6px;border-radius:6px;border:none;font-size:.65rem;font-weight:700;cursor:default}
+.mock-buy-btn{flex:1;padding:6px;border-radius:6px;border:none;font-size:.65rem;font-weight:700;cursor:pointer}
 .mock-buy-btn.primary{background:linear-gradient(135deg,#00D4FF,#0099FF);color:#000}
 .mock-buy-btn.secondary{background:var(--surface);color:var(--text);border:1px solid var(--border)}
 
@@ -238,7 +238,7 @@ img{max-width:100%;display:block}
 .mock-card-info p{font-size:.7rem;color:var(--muted)}
 .mock-card-price{font-size:1rem;font-weight:800;color:var(--success);margin-top:4px}
 .mock-protection{display:flex;align-items:center;gap:6px;background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.2);border-radius:6px;padding:8px;font-size:.7rem;color:var(--success);margin-bottom:12px}
-.mock-checkout-btn{width:100%;padding:8px;background:linear-gradient(135deg,#00D4FF,#0099FF);color:#000;border:none;border-radius:6px;font-weight:700;font-size:.8rem;cursor:default}
+.mock-checkout-btn{width:100%;padding:8px;background:linear-gradient(135deg,#00D4FF,#0099FF);color:#000;border:none;border-radius:6px;font-weight:700;font-size:.8rem;cursor:pointer}
 
 /* Step 4 mockup: Dashboard */
 .mock-dashboard{background:var(--surface);border-radius:8px;padding:16px}
@@ -275,7 +275,7 @@ img{max-width:100%;display:block}
 .preview-condition{font-size:.7rem;font-weight:700;padding:2px 8px;border-radius:4px;background:rgba(0,212,255,.15);color:var(--primary)}
 .preview-price{font-size:1.2rem;font-weight:800;color:var(--secondary);margin-bottom:12px}
 .preview-btns{display:flex;gap:8px}
-.preview-btn{flex:1;padding:8px;border-radius:8px;border:none;font-size:.8rem;font-weight:700;cursor:default;text-align:center}
+.preview-btn{flex:1;padding:8px;border-radius:8px;border:none;font-size:.8rem;font-weight:700;cursor:pointer;text-align:center}
 .preview-btn.buy{background:linear-gradient(135deg,#00D4FF,#0099FF);color:#000}
 .preview-btn.watch{background:var(--surface);color:var(--text);border:1px solid var(--border)}
 
@@ -564,7 +564,7 @@ img{max-width:100%;display:block}
             </div>
           </div>
           <div class="mock-buy-bar">
-            <div class="mock-buy-btn primary">Buy Now $249</div>
+            <div class="mock-buy-btn primary" onclick="scrollToWaitlist()">Buy Now $249</div>
             <div class="mock-buy-btn secondary">Watch</div>
           </div>
         </div>
@@ -591,7 +591,7 @@ img{max-width:100%;display:block}
               <svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
               Buyer Protection Guaranteed
             </div>
-            <div class="mock-checkout-btn">Complete Purchase</div>
+            <div class="mock-checkout-btn" onclick="scrollToWaitlist()">Complete Purchase</div>
           </div>
         </div>
         <div class="step-desc">Secure checkout with buyer protection, escrow, and verified grading data.</div>
@@ -638,42 +638,42 @@ img{max-width:100%;display:block}
     <h2 class="section-title">Built for Card Collectors</h2>
     <p class="section-sub">Every feature designed to help you sell more cards, faster</p>
     <div class="features-grid">
-      <div class="feature-card">
+      <div class="feature-card" onclick="scrollToWaitlist()">
         <div class="feature-icon">&#128308;</div>
         <h3>Live Streaming</h3>
         <p>Go live in one tap. HD streaming with real-time chat and instant purchases from viewers.</p>
       </div>
-      <div class="feature-card">
+      <div class="feature-card" onclick="scrollToWaitlist()">
         <div class="feature-icon">&#127978;</div>
         <h3>Marketplace</h3>
         <p>List cards for fixed price or auction. Advanced search, filters, and price history on every card.</p>
       </div>
-      <div class="feature-card">
+      <div class="feature-card" onclick="scrollToWaitlist()">
         <div class="feature-icon">&#11088;</div>
         <h3>Grading Integration</h3>
         <p>Pull verified grades from PSA, BGS, and CGC directly into your listings. Build trust instantly.</p>
       </div>
-      <div class="feature-card">
+      <div class="feature-card" onclick="scrollToWaitlist()">
         <div class="feature-icon">&#127873;</div>
         <h3>Pack Break Rooms</h3>
         <p>Host pack breaks with randomized spot selection. Buyers watch live as their packs get opened.</p>
       </div>
-      <div class="feature-card">
+      <div class="feature-card" onclick="scrollToWaitlist()">
         <div class="feature-icon">&#128184;</div>
         <h3>Fiat + Crypto Payments</h3>
         <p>Accept credit cards, PayPal, and crypto. More payment options means more sales.</p>
       </div>
-      <div class="feature-card">
+      <div class="feature-card" onclick="scrollToWaitlist()">
         <div class="feature-icon">&#128202;</div>
         <h3>Seller Dashboard</h3>
         <p>Track sales, views, conversion rates, and revenue. Know exactly how your shop performs.</p>
       </div>
-      <div class="feature-card">
+      <div class="feature-card" onclick="scrollToWaitlist()">
         <div class="feature-icon">&#128737;&#65039;</div>
         <h3>Buyer Protection</h3>
         <p>Full refund guarantee on every transaction. Items not as described? Money back, no questions.</p>
       </div>
-      <div class="feature-card">
+      <div class="feature-card" onclick="scrollToWaitlist()">
         <div class="feature-icon">&#128241;</div>
         <h3>Mobile First</h3>
         <p>List, stream, buy, and manage your entire shop from your phone. No desktop required.</p>
@@ -688,7 +688,7 @@ img{max-width:100%;display:block}
     <h2 class="section-title">Sneak Peek: The Marketplace</h2>
     <p class="section-sub">Here's what buying and selling will look like</p>
     <div class="preview-grid">
-      <div class="preview-card">
+      <div class="preview-card" onclick="scrollToWaitlist()">
         <div class="preview-img grad1">
           <span class="preview-live">LIVE</span>
           Charizard VMAX<br>Secret Rare
@@ -701,12 +701,12 @@ img{max-width:100%;display:block}
           </div>
           <div class="preview-price">$849.00</div>
           <div class="preview-btns">
-            <div class="preview-btn buy">Buy Now</div>
-            <div class="preview-btn watch">Watch Live</div>
+            <div class="preview-btn buy" onclick="scrollToWaitlist()">Buy Now</div>
+            <div class="preview-btn watch" onclick="scrollToWaitlist()">Watch Live</div>
           </div>
         </div>
       </div>
-      <div class="preview-card">
+      <div class="preview-card" onclick="scrollToWaitlist()">
         <div class="preview-img grad2">
           Pikachu VMAX<br>Rainbow Rare
         </div>
@@ -718,12 +718,12 @@ img{max-width:100%;display:block}
           </div>
           <div class="preview-price">$425.00</div>
           <div class="preview-btns">
-            <div class="preview-btn buy">Buy Now</div>
+            <div class="preview-btn buy" onclick="scrollToWaitlist()">Buy Now</div>
             <div class="preview-btn watch">Details</div>
           </div>
         </div>
       </div>
-      <div class="preview-card">
+      <div class="preview-card" onclick="scrollToWaitlist()">
         <div class="preview-img grad3">
           Luka Doncic<br>Prizm Silver
         </div>
@@ -735,12 +735,12 @@ img{max-width:100%;display:block}
           </div>
           <div class="preview-price">$1,200.00</div>
           <div class="preview-btns">
-            <div class="preview-btn buy">Buy Now</div>
+            <div class="preview-btn buy" onclick="scrollToWaitlist()">Buy Now</div>
             <div class="preview-btn watch">Details</div>
           </div>
         </div>
       </div>
-      <div class="preview-card">
+      <div class="preview-card" onclick="scrollToWaitlist()">
         <div class="preview-img grad4">
           Mewtwo GX<br>Full Art
         </div>
@@ -752,7 +752,7 @@ img{max-width:100%;display:block}
           </div>
           <div class="preview-price">$89.99</div>
           <div class="preview-btns">
-            <div class="preview-btn buy">Buy Now</div>
+            <div class="preview-btn buy" onclick="scrollToWaitlist()">Buy Now</div>
             <div class="preview-btn watch">Details</div>
           </div>
         </div>
