@@ -1,8 +1,8 @@
-# SellStream
+# Sell Party
 
 > Live marketplace for Pokemon & Sports card collectors
 
-SellStream is a live streaming marketplace where card collectors buy, sell, and break packs in real-time. Think Whatnot meets eBay, built for the card collecting community.
+Sell Party is a live streaming marketplace where card collectors buy, sell, and break packs in real-time. Think Whatnot meets eBay, built for the card collecting community.
 
 ## Features
 - Live streaming sales with real-time chat and bidding
@@ -27,8 +27,8 @@ SellStream is a live streaming marketplace where card collectors buy, sell, and 
 - Other Trading Card Games
 
 ## Status
-Currently in waitlist phase. Join at https://sellstream.com
+Currently in waitlist phase. Join at https://sell.party
 
 ## Links
-- Website: https://sellstream.com
-- Privacy: https://sellstream.com/privacy.html
+- Website: https://sell.party
+- Privacy: https://sell.party/privacy.html

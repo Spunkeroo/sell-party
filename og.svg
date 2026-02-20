@@ -33,7 +33,7 @@
   <text x="575" y="61" fill="#fff" font-family="Arial,sans-serif" font-weight="700" font-size="14">LIVE</text>
   <!-- Logo text -->
   <text x="600" y="350" text-anchor="middle" font-family="Arial,sans-serif" font-weight="900" font-size="80">
-    <tspan fill="url(#gold)">Sell</tspan><tspan fill="url(#purple)">Stream</tspan>
+    <tspan fill="url(#gold)">Sell</tspan><tspan fill="url(#purple)"> Party</tspan>
   </text>
   <!-- Tagline -->
   <text x="600" y="410" text-anchor="middle" font-family="Arial,sans-serif" font-weight="400" font-size="28" fill="#71717a">Live Marketplace for Card Collectors</text>
@@ -41,5 +41,5 @@
   <rect x="440" y="450" width="320" height="56" rx="28" fill="#8b5cf6"/>
   <text x="600" y="486" text-anchor="middle" font-family="Arial,sans-serif" font-weight="700" font-size="20" fill="#fff">Join the Waitlist</text>
   <!-- URL -->
-  <text x="600" y="560" text-anchor="middle" font-family="Arial,sans-serif" font-weight="600" font-size="20" fill="#f59e0b">sellstream.com</text>
+  <text x="600" y="560" text-anchor="middle" font-family="Arial,sans-serif" font-weight="600" font-size="20" fill="#f59e0b">sell.party</text>
 </svg>
