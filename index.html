@@ -4,16 +4,32 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sell Party — Live Marketplace for Pokemon & Sports Cards</title>
-<meta name="description" content="The live marketplace where card collectors buy, sell, and break packs in real-time. Pokemon, Sports, TCG — go live, sell cards, get paid instantly.">
-<meta name="keywords" content="sell pokemon cards online, live card breaks, pokemon card marketplace, sports card auction, TCG marketplace, pack breaks, card grading, PSA grading">
+<meta name="description" content="The live marketplace where card collectors buy, sell, and break packs in real-time. Pokemon, Sports, TCG — go live, sell cards, get paid instantly. Lower fees than eBay, better than Whatnot.">
+<meta name="keywords" content="sell pokemon cards online, live card breaks, pokemon card marketplace, sports card auction, TCG marketplace, pack breaks, card grading, PSA grading, BGS grading, CGC grading, pokemon card selling app, live selling platform, card break streaming, sell sports cards, sell trading cards, pokemon TCG live, whatnot alternative, card collector marketplace, sell graded cards, PSA 10 marketplace, card break rooms, live card auction, pokemon card value, sports card value, trading card marketplace, card selling platform, live commerce, social selling, collectibles marketplace">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://sell.party/">
+<meta name="theme-color" content="#00D4FF">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Sell Party">
+<link rel="alternate" hreflang="en" href="https://sell.party/">
+
+<!-- Preconnect -->
+<link rel="preconnect" href="https://www.googletagmanager.com">
+<link rel="preconnect" href="https://www.gstatic.com">
+<link rel="preconnect" href="https://predict-network-ec767-default-rtdb.firebaseio.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="dns-prefetch" href="https://www.googletagmanager.com">
+<link rel="dns-prefetch" href="https://www.gstatic.com">
+
+<!-- Content-Security-Policy -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.gstatic.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; connect-src https://predict-network-ec767-default-rtdb.firebaseio.com https://www.google-analytics.com https://www.googletagmanager.com; img-src 'self' data: https:; frame-src 'none';">
 
 <!-- Open Graph -->
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://sell.party/">
 <meta property="og:title" content="Sell Party — Live Marketplace for Pokemon & Sports Cards">
-<meta property="og:description" content="Go live. Sell cards. Get paid. The real-time marketplace for Pokemon & Sports card collectors.">
+<meta property="og:description" content="Go live. Sell cards. Get paid. The real-time marketplace for Pokemon & Sports card collectors. Lower fees, live streaming, instant payments.">
 <meta property="og:image" content="https://sell.party/og.svg">
 <meta property="og:site_name" content="Sell Party">
 
@@ -51,6 +67,43 @@
 }
 </script>
 
+<!-- JSON-LD: SoftwareApplication -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Sell Party",
+  "applicationCategory": "MarketplaceApplication",
+  "operatingSystem": "Web, iOS, Android",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD",
+    "description": "Free tier with 8% transaction fee"
+  },
+  "description": "Live marketplace platform for buying and selling Pokemon and Sports cards with real-time streaming, grading integration, and buyer protection.",
+  "url": "https://sell.party"
+}
+</script>
+
+<!-- JSON-LD: Product -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "Sell Party Pro",
+  "description": "Professional seller plan with unlimited live streams, 500 active listings, 1080p streaming, and 5% transaction fees.",
+  "brand": {"@type": "Brand", "name": "Sell Party"},
+  "offers": {
+    "@type": "Offer",
+    "price": "29.00",
+    "priceCurrency": "USD",
+    "availability": "https://schema.org/PreOrder",
+    "url": "https://sell.party/#pricing"
+  }
+}
+</script>
+
 <!-- JSON-LD: FAQPage -->
 <script type="application/ld+json">
 {
@@ -79,7 +132,8 @@ gtag('js',new Date());gtag('config','G-GVNL11PEGP');
 function trackEvent(name,params){gtag('event',name,params||{});}
 </script>
 
-<!-- Firebase -->
+<!-- Firebase (defer non-critical) -->
+<!-- SRI note: Firebase CDN scripts loaded from gstatic.com trusted origin -->
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
 
@@ -87,89 +141,199 @@ function trackEvent(name,params){gtag('event',name,params||{});}
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 :root{
   --bg:#0a0a0f;--surface:#111118;--card:#16161d;--border:#1f1f28;
-  --text:#e5e5e8;--muted:#71717a;--primary:#8b5cf6;--secondary:#3b82f6;
-  --accent:#f59e0b;--success:#22c55e;--danger:#ef4444;
+  --text:#e5e5e8;--muted:#71717a;--primary:#00D4FF;--secondary:#FFD700;
+  --accent:#FF6B35;--success:#22c55e;--danger:#ef4444;
   --radius:12px;--max-w:1200px;
 }
 html{scroll-behavior:smooth;font-size:16px}
 body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden}
 a{color:var(--primary);text-decoration:none;transition:color .2s}
-a:hover{color:var(--accent)}
+a:hover{color:var(--secondary)}
 img{max-width:100%;display:block}
 .container{max-width:var(--max-w);margin:0 auto;padding:0 20px}
 
 /* Nav */
-.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,10,15,.9);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:16px 0}
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,10,15,.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:16px 0}
 .nav .container{display:flex;align-items:center;justify-content:space-between}
-.logo{font-size:1.5rem;font-weight:800;letter-spacing:-.02em}
-.logo-sell{background:linear-gradient(135deg,var(--accent),#fbbf24);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.logo-party{background:linear-gradient(135deg,var(--primary),#a78bfa);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.nav-cta{background:var(--primary);color:#fff;border:none;padding:10px 24px;border-radius:99px;font-weight:600;font-size:.9rem;cursor:pointer;transition:all .2s}
-.nav-cta:hover{background:#7c3aed;transform:translateY(-1px);box-shadow:0 4px 20px rgba(139,92,246,.4)}
+.logo{font-size:1.6rem;font-weight:800;letter-spacing:-.02em}
+.logo-sell{background:linear-gradient(135deg,#FFD700,#FFA500);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.logo-party{background:linear-gradient(135deg,#00D4FF,#0099FF);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.nav-links{display:flex;align-items:center;gap:24px}
+.nav-link{color:var(--muted);font-size:.9rem;font-weight:500;transition:color .2s}
+.nav-link:hover{color:var(--primary)}
+.nav-cta{background:linear-gradient(135deg,var(--primary),#0099FF);color:#000;border:none;padding:10px 24px;border-radius:99px;font-weight:700;font-size:.9rem;cursor:pointer;transition:all .2s}
+.nav-cta:hover{transform:translateY(-1px);box-shadow:0 4px 20px rgba(0,212,255,.4)}
 
 /* Hero */
 .hero{padding:140px 0 80px;text-align:center;position:relative;overflow:hidden}
-.hero::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:800px;height:800px;background:radial-gradient(circle,rgba(139,92,246,.12) 0%,transparent 70%);pointer-events:none}
+.hero::before{content:'';position:absolute;top:-100px;left:50%;transform:translateX(-50%);width:900px;height:900px;background:radial-gradient(circle,rgba(0,212,255,.1) 0%,rgba(255,215,0,.05) 40%,transparent 70%);pointer-events:none}
 .hero-badge{display:inline-flex;align-items:center;gap:8px;background:var(--surface);border:1px solid var(--border);border-radius:99px;padding:8px 20px;font-size:.85rem;color:var(--muted);margin-bottom:24px}
 .hero-badge .dot{width:8px;height:8px;border-radius:50%;background:var(--success);animation:pulse 2s infinite}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
 .hero h1{font-size:clamp(2.5rem,6vw,4.5rem);font-weight:900;line-height:1.1;margin-bottom:16px;letter-spacing:-.03em}
-.hero h1 .gold{background:linear-gradient(135deg,var(--accent),#fbbf24,var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.hero h1 .purple{background:linear-gradient(135deg,var(--primary),#a78bfa);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.hero-sub{font-size:clamp(1rem,2vw,1.25rem);color:var(--muted);max-width:600px;margin:0 auto 40px}
+.hero h1 .gold{background:linear-gradient(135deg,#FFD700,#FFA500,#FFD700);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero h1 .cyan{background:linear-gradient(135deg,#00D4FF,#0099FF);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-sub{font-size:clamp(1rem,2vw,1.25rem);color:var(--muted);max-width:620px;margin:0 auto 40px}
 .hero-stats{display:flex;justify-content:center;gap:40px;margin-bottom:40px;flex-wrap:wrap}
 .stat{text-align:center}
-.stat-num{font-size:2rem;font-weight:800;color:var(--accent)}
+.stat-num{font-size:2rem;font-weight:800;background:linear-gradient(135deg,#FFD700,#FFA500);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .stat-label{font-size:.8rem;color:var(--muted);text-transform:uppercase;letter-spacing:.1em}
-.hero-cta{display:inline-flex;align-items:center;gap:10px;background:linear-gradient(135deg,var(--primary),var(--secondary));color:#fff;border:none;padding:16px 40px;border-radius:99px;font-size:1.1rem;font-weight:700;cursor:pointer;transition:all .3s;box-shadow:0 4px 30px rgba(139,92,246,.3)}
-.hero-cta:hover{transform:translateY(-2px);box-shadow:0 8px 40px rgba(139,92,246,.5)}
+.hero-cta{display:inline-flex;align-items:center;gap:10px;background:linear-gradient(135deg,#00D4FF,#0099FF);color:#000;border:none;padding:16px 40px;border-radius:99px;font-size:1.1rem;font-weight:700;cursor:pointer;transition:all .3s;box-shadow:0 4px 30px rgba(0,212,255,.3)}
+.hero-cta:hover{transform:translateY(-2px);box-shadow:0 8px 40px rgba(0,212,255,.5)}
 .hero-cta svg{width:20px;height:20px}
+.hero-trust{display:flex;justify-content:center;gap:24px;margin-top:32px;flex-wrap:wrap}
+.hero-trust-item{display:flex;align-items:center;gap:6px;font-size:.85rem;color:var(--muted)}
+.hero-trust-item svg{width:16px;height:16px;color:var(--success)}
 
 /* Live Counter Bar */
 .live-bar{background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:16px 0;text-align:center}
 .live-bar .container{display:flex;justify-content:center;gap:40px;flex-wrap:wrap}
 .live-stat{display:flex;align-items:center;gap:8px;font-size:.95rem}
 .live-stat .dot{width:8px;height:8px;border-radius:50%;background:var(--success);animation:pulse 2s infinite}
-.live-stat strong{color:var(--accent);font-weight:700}
+.live-stat strong{background:linear-gradient(135deg,#FFD700,#FFA500);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;font-weight:700}
 
 /* Sections */
 .section{padding:80px 0}
 .section-title{font-size:clamp(1.5rem,3vw,2.5rem);font-weight:800;text-align:center;margin-bottom:12px;letter-spacing:-.02em}
 .section-sub{text-align:center;color:var(--muted);max-width:600px;margin:0 auto 48px;font-size:1.05rem}
 
-/* How It Works */
-.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:32px}
-.step{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:40px 32px;text-align:center;transition:all .3s;position:relative}
-.step:hover{border-color:var(--primary);transform:translateY(-4px);box-shadow:0 8px 30px rgba(139,92,246,.15)}
-.step-num{width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,var(--primary),var(--secondary));color:#fff;font-weight:800;font-size:1.2rem;display:flex;align-items:center;justify-content:center;margin:0 auto 20px}
-.step h3{font-size:1.25rem;font-weight:700;margin-bottom:8px}
-.step p{color:var(--muted);font-size:.95rem}
-.step-icon{font-size:2.5rem;margin-bottom:16px}
+/* How It Works - Visual Steps */
+.steps-visual{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px}
+.step-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;transition:all .3s}
+.step-card:hover{border-color:var(--primary);transform:translateY(-4px);box-shadow:0 8px 30px rgba(0,212,255,.12)}
+.step-header{display:flex;align-items:center;gap:12px;padding:20px 24px;border-bottom:1px solid var(--border)}
+.step-num{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#00D4FF,#0099FF);color:#000;font-weight:800;font-size:.9rem;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.step-header h3{font-size:1rem;font-weight:700}
+.step-mockup{padding:20px;min-height:180px}
+.step-desc{padding:0 24px 20px;color:var(--muted);font-size:.85rem}
+
+/* Step 1 mockup: Listing form */
+.mock-form{display:flex;flex-direction:column;gap:8px}
+.mock-input{background:var(--surface);border:1px solid var(--border);border-radius:6px;padding:8px 12px;font-size:.75rem;color:var(--muted);display:flex;justify-content:space-between;align-items:center}
+.mock-input span{color:var(--text);font-size:.8rem}
+.mock-upload{background:var(--surface);border:2px dashed var(--border);border-radius:8px;padding:16px;text-align:center;font-size:.75rem;color:var(--muted)}
+.mock-upload-icon{font-size:1.5rem;margin-bottom:4px}
+.mock-price-row{display:flex;gap:8px}
+.mock-price-row .mock-input{flex:1}
+
+/* Step 2 mockup: Stream view */
+.mock-stream{display:flex;gap:8px;height:140px}
+.mock-video{flex:2;background:linear-gradient(135deg,#1a1a2e,#16213e);border-radius:8px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.mock-video::after{content:'';position:absolute;top:8px;left:8px;width:40px;height:18px;background:#ef4444;border-radius:4px}
+.mock-video-icon{font-size:2rem;opacity:.5}
+.mock-chat{flex:1;background:var(--surface);border-radius:8px;padding:8px;display:flex;flex-direction:column;gap:4px;overflow:hidden}
+.mock-msg{font-size:.6rem;color:var(--muted);padding:2px 6px;background:var(--card);border-radius:4px}
+.mock-msg .name{color:var(--primary);font-weight:600}
+.mock-buy-bar{display:flex;gap:6px;margin-top:8px}
+.mock-buy-btn{flex:1;padding:6px;border-radius:6px;border:none;font-size:.65rem;font-weight:700;cursor:default}
+.mock-buy-btn.primary{background:linear-gradient(135deg,#00D4FF,#0099FF);color:#000}
+.mock-buy-btn.secondary{background:var(--surface);color:var(--text);border:1px solid var(--border)}
+
+/* Step 3 mockup: Checkout */
+.mock-checkout{background:var(--surface);border-radius:8px;padding:16px}
+.mock-checkout-card{display:flex;gap:12px;margin-bottom:12px}
+.mock-card-img{width:60px;height:80px;background:linear-gradient(135deg,#FFD700,#FFA500);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:.5rem;font-weight:700;color:#000;text-align:center;padding:4px}
+.mock-card-info{flex:1}
+.mock-card-info h4{font-size:.8rem;font-weight:700;margin-bottom:2px}
+.mock-card-info p{font-size:.7rem;color:var(--muted)}
+.mock-card-price{font-size:1rem;font-weight:800;color:var(--success);margin-top:4px}
+.mock-protection{display:flex;align-items:center;gap:6px;background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.2);border-radius:6px;padding:8px;font-size:.7rem;color:var(--success);margin-bottom:12px}
+.mock-checkout-btn{width:100%;padding:8px;background:linear-gradient(135deg,#00D4FF,#0099FF);color:#000;border:none;border-radius:6px;font-weight:700;font-size:.8rem;cursor:default}
+
+/* Step 4 mockup: Dashboard */
+.mock-dashboard{background:var(--surface);border-radius:8px;padding:16px}
+.mock-dash-stats{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px}
+.mock-dash-stat{background:var(--card);border-radius:6px;padding:8px;text-align:center}
+.mock-dash-stat .val{font-size:1rem;font-weight:800;color:var(--secondary)}
+.mock-dash-stat .label{font-size:.6rem;color:var(--muted);text-transform:uppercase}
+.mock-chart{height:60px;background:var(--card);border-radius:6px;position:relative;overflow:hidden;display:flex;align-items:flex-end;padding:0 4px 4px;gap:3px}
+.mock-chart-bar{flex:1;background:linear-gradient(to top,#00D4FF,#0099FF);border-radius:2px 2px 0 0;min-height:4px;transition:height .3s}
 
 /* Features Grid */
 .features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px}
 .feature-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:32px;transition:all .3s}
-.feature-card:hover{border-color:var(--primary);transform:translateY(-2px)}
+.feature-card:hover{border-color:var(--primary);transform:translateY(-2px);box-shadow:0 4px 20px rgba(0,212,255,.1)}
 .feature-icon{font-size:2rem;margin-bottom:16px}
 .feature-card h3{font-size:1.1rem;font-weight:700;margin-bottom:8px}
 .feature-card p{color:var(--muted);font-size:.9rem}
 
+/* Marketplace Preview */
+.marketplace-preview{background:var(--surface)}
+.preview-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px;max-width:1050px;margin:0 auto}
+.preview-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;transition:all .3s}
+.preview-card:hover{border-color:var(--primary);transform:translateY(-2px)}
+.preview-img{height:180px;display:flex;align-items:center;justify-content:center;font-size:.9rem;font-weight:700;color:#000;text-align:center;padding:16px;position:relative}
+.preview-img.grad1{background:linear-gradient(135deg,#FFD700,#FFA500)}
+.preview-img.grad2{background:linear-gradient(135deg,#00D4FF,#0099FF)}
+.preview-img.grad3{background:linear-gradient(135deg,#22c55e,#16a34a)}
+.preview-img.grad4{background:linear-gradient(135deg,#a855f7,#7c3aed)}
+.preview-live{position:absolute;top:10px;left:10px;background:#ef4444;color:#fff;font-size:.65rem;font-weight:800;padding:3px 10px;border-radius:4px;text-transform:uppercase;animation:pulse 2s infinite}
+.preview-body{padding:16px}
+.preview-body h4{font-size:.95rem;font-weight:700;margin-bottom:4px}
+.preview-meta{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.preview-seller{font-size:.75rem;color:var(--muted)}
+.preview-condition{font-size:.7rem;font-weight:700;padding:2px 8px;border-radius:4px;background:rgba(0,212,255,.15);color:var(--primary)}
+.preview-price{font-size:1.2rem;font-weight:800;color:var(--secondary);margin-bottom:12px}
+.preview-btns{display:flex;gap:8px}
+.preview-btn{flex:1;padding:8px;border-radius:8px;border:none;font-size:.8rem;font-weight:700;cursor:default;text-align:center}
+.preview-btn.buy{background:linear-gradient(135deg,#00D4FF,#0099FF);color:#000}
+.preview-btn.watch{background:var(--surface);color:var(--text);border:1px solid var(--border)}
+
+/* Comparison / Infographic */
+.comparison-section{background:var(--bg)}
+.comparison-table{max-width:900px;margin:0 auto;overflow-x:auto;-webkit-overflow-scrolling:touch}
+.comparison-table table{width:100%;border-collapse:collapse;min-width:600px}
+.comparison-table th,.comparison-table td{padding:14px 16px;text-align:center;border-bottom:1px solid var(--border);font-size:.9rem}
+.comparison-table th{font-weight:700;color:var(--muted);font-size:.8rem;text-transform:uppercase;letter-spacing:.05em}
+.comparison-table th.sp-col{color:var(--primary);background:rgba(0,212,255,.05)}
+.comparison-table td.sp-col{background:rgba(0,212,255,.03);font-weight:600}
+.comparison-table td.feature-name{text-align:left;font-weight:600;color:var(--text)}
+.comp-yes{color:var(--success);font-weight:700}
+.comp-no{color:var(--danger);opacity:.5}
+.comp-partial{color:var(--secondary);font-size:.8rem}
+
+/* Spin Wheel */
+.spin-section{background:var(--surface);text-align:center}
+.spin-container{max-width:400px;margin:0 auto}
+.wheel-wrapper{position:relative;width:300px;height:300px;margin:0 auto 24px}
+.wheel{width:300px;height:300px;border-radius:50%;position:relative;transition:transform 4s cubic-bezier(.17,.67,.12,.99);border:4px solid var(--secondary);box-shadow:0 0 40px rgba(255,215,0,.2)}
+.wheel-segment{position:absolute;width:100%;height:100%;clip-path:polygon(50% 50%, 50% 0%, 100% 0%);transform-origin:50% 50%}
+.wheel-segment-inner{width:100%;height:100%;display:flex;align-items:18%;justify-content:center;padding-top:20px;font-size:.55rem;font-weight:700;color:#000;transform:rotate(22.5deg);text-align:center;line-height:1.1}
+.wheel-pointer{position:absolute;top:-12px;left:50%;transform:translateX(-50%);width:0;height:0;border-left:14px solid transparent;border-right:14px solid transparent;border-top:24px solid var(--secondary);z-index:10;filter:drop-shadow(0 2px 4px rgba(0,0,0,.5))}
+.wheel-center{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:50px;height:50px;border-radius:50%;background:var(--card);border:3px solid var(--secondary);z-index:5;display:flex;align-items:center;justify-content:center;font-size:1.2rem}
+.spin-btn{background:linear-gradient(135deg,#FFD700,#FFA500);color:#000;border:none;padding:14px 40px;border-radius:99px;font-size:1.1rem;font-weight:800;cursor:pointer;transition:all .3s;box-shadow:0 4px 20px rgba(255,215,0,.3)}
+.spin-btn:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(255,215,0,.5)}
+.spin-btn:disabled{opacity:.5;cursor:not-allowed;transform:none;box-shadow:none}
+.spin-result{margin-top:16px;font-size:.9rem;color:var(--muted)}
+.spin-cooldown{color:var(--muted);font-size:.85rem;margin-top:8px}
+
+/* Spin Modal */
+.spin-modal-overlay{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.8);z-index:300;display:none;align-items:center;justify-content:center;backdrop-filter:blur(6px)}
+.spin-modal-overlay.active{display:flex}
+.spin-modal{background:var(--surface);border:2px solid var(--secondary);border-radius:var(--radius);padding:40px;max-width:400px;width:90%;text-align:center;position:relative;animation:modalPop .3s ease}
+@keyframes modalPop{from{transform:scale(.8);opacity:0}to{transform:scale(1);opacity:1}}
+.spin-modal h3{font-size:1.5rem;font-weight:800;margin-bottom:8px;background:linear-gradient(135deg,#FFD700,#FFA500);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.spin-modal .prize-name{font-size:1.8rem;font-weight:900;color:var(--text);margin-bottom:16px}
+.spin-modal p{color:var(--muted);margin-bottom:24px;font-size:.9rem}
+.spin-modal-close{background:linear-gradient(135deg,#00D4FF,#0099FF);color:#000;border:none;padding:12px 32px;border-radius:99px;font-weight:700;cursor:pointer;transition:all .2s}
+.spin-modal-close:hover{transform:translateY(-1px)}
+
 /* Pricing */
 .pricing-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px;max-width:1000px;margin:0 auto}
 .price-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:40px 32px;text-align:center;transition:all .3s;position:relative}
-.price-card.featured{border-color:var(--primary);box-shadow:0 0 40px rgba(139,92,246,.15)}
-.price-card.featured::before{content:'MOST POPULAR';position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--primary);color:#fff;padding:4px 16px;border-radius:99px;font-size:.75rem;font-weight:700;letter-spacing:.05em}
+.price-card.featured{border-color:var(--primary);box-shadow:0 0 40px rgba(0,212,255,.15)}
+.price-card.featured::before{content:'MOST POPULAR';position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,#00D4FF,#0099FF);color:#000;padding:4px 16px;border-radius:99px;font-size:.75rem;font-weight:700;letter-spacing:.05em}
 .price-name{font-size:1.1rem;font-weight:600;color:var(--muted);margin-bottom:8px}
 .price-amount{font-size:3rem;font-weight:900;margin-bottom:4px}
 .price-amount span{font-size:1rem;font-weight:400;color:var(--muted)}
-.price-fee{font-size:1.1rem;color:var(--accent);font-weight:700;margin-bottom:24px}
+.price-fee{font-size:1.1rem;background:linear-gradient(135deg,#FFD700,#FFA500);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;font-weight:700;margin-bottom:24px}
 .price-features{list-style:none;text-align:left;margin-bottom:32px}
 .price-features li{padding:8px 0;border-bottom:1px solid var(--border);font-size:.9rem;display:flex;align-items:center;gap:10px}
-.price-features li::before{content:'✓';color:var(--success);font-weight:700}
-.price-features li.no::before{content:'—';color:var(--muted)}
+.price-features li::before{content:'';color:var(--success);font-weight:700}
+.price-features li.no::before{content:'';color:var(--muted)}
 .price-btn{width:100%;padding:14px;border-radius:99px;border:none;font-weight:700;font-size:1rem;cursor:pointer;transition:all .2s}
-.price-btn-primary{background:var(--primary);color:#fff}
-.price-btn-primary:hover{background:#7c3aed}
+.price-btn-primary{background:linear-gradient(135deg,#00D4FF,#0099FF);color:#000}
+.price-btn-primary:hover{box-shadow:0 4px 20px rgba(0,212,255,.4);transform:translateY(-1px)}
 .price-btn-outline{background:transparent;color:var(--text);border:1px solid var(--border)}
 .price-btn-outline:hover{border-color:var(--primary);color:var(--primary)}
 
@@ -183,8 +347,8 @@ img{max-width:100%;display:block}
 .form-input::placeholder{color:var(--muted)}
 .form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 .form-select{appearance:none;background:var(--card) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M6 8L1 3h10z' fill='%2371717a'/%3E%3C/svg%3E") no-repeat right 16px center;cursor:pointer}
-.form-submit{background:linear-gradient(135deg,var(--primary),var(--secondary));color:#fff;border:none;padding:16px;border-radius:99px;font-size:1.1rem;font-weight:700;cursor:pointer;transition:all .3s}
-.form-submit:hover{transform:translateY(-2px);box-shadow:0 4px 20px rgba(139,92,246,.4)}
+.form-submit{background:linear-gradient(135deg,#00D4FF,#0099FF);color:#000;border:none;padding:16px;border-radius:99px;font-size:1.1rem;font-weight:700;cursor:pointer;transition:all .3s}
+.form-submit:hover{transform:translateY(-2px);box-shadow:0 4px 20px rgba(0,212,255,.4)}
 .form-submit:disabled{opacity:.6;cursor:not-allowed;transform:none}
 .form-success{text-align:center;display:none}
 .form-success h3{font-size:1.5rem;font-weight:800;margin-bottom:8px;color:var(--success)}
@@ -194,9 +358,9 @@ img{max-width:100%;display:block}
 .referral-section{background:var(--bg)}
 .referral-box{max-width:600px;margin:0 auto;text-align:center}
 .ref-link-box{display:flex;align-items:center;gap:8px;background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:12px 16px;margin-bottom:20px}
-.ref-link-box input{flex:1;background:none;border:none;color:var(--accent);font-size:1rem;font-family:monospace;outline:none}
-.ref-copy-btn{background:var(--primary);color:#fff;border:none;padding:8px 20px;border-radius:8px;font-weight:600;cursor:pointer;transition:all .2s;white-space:nowrap}
-.ref-copy-btn:hover{background:#7c3aed}
+.ref-link-box input{flex:1;background:none;border:none;color:var(--secondary);font-size:1rem;font-family:monospace;outline:none}
+.ref-copy-btn{background:linear-gradient(135deg,#00D4FF,#0099FF);color:#000;border:none;padding:8px 20px;border-radius:8px;font-weight:600;cursor:pointer;transition:all .2s;white-space:nowrap}
+.ref-copy-btn:hover{box-shadow:0 2px 10px rgba(0,212,255,.3)}
 .share-btns{display:flex;justify-content:center;gap:12px;margin-bottom:32px;flex-wrap:wrap}
 .share-btn{padding:10px 24px;border-radius:99px;border:1px solid var(--border);background:var(--card);color:var(--text);font-weight:600;font-size:.9rem;cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:8px}
 .share-btn:hover{border-color:var(--primary);background:var(--surface)}
@@ -209,10 +373,10 @@ img{max-width:100%;display:block}
 .leaderboard{max-width:500px;margin:0 auto}
 .leaderboard h3{text-align:center;font-size:1.25rem;margin-bottom:16px}
 .lb-entry{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;border-bottom:1px solid var(--border);font-size:.9rem}
-.lb-entry:first-child{color:var(--accent);font-weight:700}
+.lb-entry:first-child{color:var(--secondary);font-weight:700}
 .lb-rank{width:30px;font-weight:700;color:var(--primary)}
 .lb-name{flex:1}
-.lb-refs{font-weight:700;color:var(--accent)}
+.lb-refs{font-weight:700;background:linear-gradient(135deg,#FFD700,#FFA500);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 
 /* Revenue Transparency */
 .transparency{background:var(--surface)}
@@ -221,7 +385,7 @@ img{max-width:100%;display:block}
 .fee-breakdown{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-top:32px}
 .fee-item{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:24px;text-align:center}
 .fee-item h4{font-size:.9rem;color:var(--muted);margin-bottom:4px}
-.fee-item .fee-val{font-size:1.5rem;font-weight:800;color:var(--accent)}
+.fee-item .fee-val{font-size:1.5rem;font-weight:800;background:linear-gradient(135deg,#FFD700,#FFA500);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 
 /* FAQ */
 .faq-list{max-width:700px;margin:0 auto}
@@ -236,6 +400,15 @@ img{max-width:100%;display:block}
 /* Newsletter */
 .newsletter{background:var(--bg);text-align:center}
 .newsletter-box{max-width:500px;margin:0 auto;background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:40px 32px}
+.newsletter-form{display:flex;gap:10px;margin-top:20px}
+.newsletter-input{flex:1;background:var(--surface);border:1px solid var(--border);border-radius:99px;padding:12px 20px;font-size:.95rem;color:var(--text);outline:none;font-family:inherit}
+.newsletter-input:focus{border-color:var(--primary)}
+.newsletter-input::placeholder{color:var(--muted)}
+.newsletter-submit{background:linear-gradient(135deg,#00D4FF,#0099FF);color:#000;border:none;padding:12px 24px;border-radius:99px;font-weight:700;font-size:.9rem;cursor:pointer;transition:all .2s;white-space:nowrap}
+.newsletter-submit:hover{transform:translateY(-1px);box-shadow:0 4px 15px rgba(0,212,255,.3)}
+.newsletter-submit:disabled{opacity:.6;cursor:not-allowed;transform:none}
+.newsletter-success{color:var(--success);font-size:.9rem;margin-top:12px;display:none}
+.newsletter-already{color:var(--primary);font-size:.9rem;margin-top:8px}
 
 /* Tip Modal */
 .tip-overlay{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.7);z-index:200;display:none;align-items:center;justify-content:center;backdrop-filter:blur(4px)}
@@ -246,7 +419,7 @@ img{max-width:100%;display:block}
 .tip-close:hover{color:var(--text)}
 .tip-addr{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:12px;margin-bottom:16px}
 .tip-addr label{font-size:.8rem;color:var(--muted);display:block;margin-bottom:4px;font-weight:600}
-.tip-addr code{font-size:.8rem;word-break:break-all;color:var(--accent);cursor:pointer}
+.tip-addr code{font-size:.8rem;word-break:break-all;color:var(--secondary);cursor:pointer}
 .tip-addr code:hover{color:var(--primary)}
 
 /* Footer */
@@ -256,7 +429,7 @@ img{max-width:100%;display:block}
 .footer-links a:hover{color:var(--primary)}
 .footer-copy{color:var(--muted);font-size:.8rem}
 .footer-tip-btn{background:none;border:1px solid var(--border);color:var(--muted);padding:8px 20px;border-radius:99px;font-size:.85rem;cursor:pointer;margin-top:12px;transition:all .2s}
-.footer-tip-btn:hover{border-color:var(--accent);color:var(--accent)}
+.footer-tip-btn:hover{border-color:var(--secondary);color:var(--secondary)}
 
 /* Responsive */
 @media(max-width:768px){
@@ -266,11 +439,21 @@ img{max-width:100%;display:block}
   .ref-stats{gap:20px}
   .live-bar .container{gap:20px}
   .pricing-grid{grid-template-columns:1fr;max-width:400px}
+  .steps-visual{grid-template-columns:1fr 1fr}
+  .preview-grid{grid-template-columns:1fr 1fr}
+  .nav-links .nav-link{display:none}
+  .newsletter-form{flex-direction:column}
+  .newsletter-submit{width:100%}
+  .comparison-table{margin:0 -20px;padding:0 20px}
+  .mock-stream{height:120px}
 }
 @media(max-width:480px){
   .nav .container{padding:0 16px}
   .container{padding:0 16px}
   .section{padding:60px 0}
+  .steps-visual{grid-template-columns:1fr}
+  .preview-grid{grid-template-columns:1fr}
+  .hero-trust{flex-direction:column;align-items:center}
 }
 </style>
 </head>
@@ -279,8 +462,13 @@ img{max-width:100%;display:block}
 <!-- Nav -->
 <nav class="nav">
   <div class="container">
-    <div class="logo"><span class="logo-sell">Sell</span><span class="logo-party">Party</span></div>
-    <button class="nav-cta" onclick="scrollToWaitlist()">Join Waitlist</button>
+    <div class="logo"><span class="logo-sell">Sell</span> <span class="logo-party">Party</span></div>
+    <div class="nav-links">
+      <a href="#how-it-works" class="nav-link">How It Works</a>
+      <a href="#pricing" class="nav-link">Pricing</a>
+      <a href="#faq" class="nav-link">FAQ</a>
+      <button class="nav-cta" onclick="scrollToWaitlist()">Join Waitlist</button>
+    </div>
   </div>
 </nav>
 
@@ -288,7 +476,7 @@ img{max-width:100%;display:block}
 <section class="hero">
   <div class="container">
     <div class="hero-badge"><span class="dot"></span> Launching Soon</div>
-    <h1><span class="gold">Sell Cards.</span> <span class="purple">Live.</span></h1>
+    <h1><span class="gold">Sell Cards.</span> <span class="cyan">Live.</span></h1>
     <p class="hero-sub">The live marketplace where Pokemon &amp; Sports card collectors buy, sell, and break packs in real-time. Go live. Get paid.</p>
     <div class="hero-stats">
       <div class="stat"><div class="stat-num" id="heroCollectors">0</div><div class="stat-label">Collectors Waiting</div></div>
@@ -298,6 +486,24 @@ img{max-width:100%;display:block}
       Join the Waitlist
       <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
     </button>
+    <div class="hero-trust">
+      <div class="hero-trust-item">
+        <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+        Buyer Protection
+      </div>
+      <div class="hero-trust-item">
+        <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+        HD Live Streaming
+      </div>
+      <div class="hero-trust-item">
+        <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+        Lowest Fees
+      </div>
+      <div class="hero-trust-item">
+        <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+        PSA + BGS + CGC
+      </div>
+    </div>
   </div>
 </section>
 
@@ -309,30 +515,119 @@ img{max-width:100%;display:block}
   </div>
 </div>
 
-<!-- How It Works -->
-<section class="section">
+<!-- How It Works - Visual Steps -->
+<section class="section" id="how-it-works">
   <div class="container">
     <h2 class="section-title">How It Works</h2>
-    <p class="section-sub">Three steps to start selling your cards to collectors worldwide</p>
-    <div class="steps">
-      <div class="step">
-        <div class="step-icon">📹</div>
-        <div class="step-num">1</div>
-        <h3>Go Live</h3>
-        <p>Start a live stream from any device. Show your cards, open packs, and engage with collectors in real-time.</p>
+    <p class="section-sub">Four steps from listing to payday</p>
+    <div class="steps-visual">
+
+      <!-- Step 1: List Your Cards -->
+      <div class="step-card">
+        <div class="step-header">
+          <div class="step-num">1</div>
+          <h3>List Your Cards</h3>
+        </div>
+        <div class="step-mockup">
+          <div class="mock-form">
+            <div class="mock-input"><span>Charizard VMAX #074</span></div>
+            <div class="mock-price-row">
+              <div class="mock-input"><span>$249.99</span></div>
+              <div class="mock-input"><span>PSA 10</span></div>
+            </div>
+            <div class="mock-upload">
+              <div class="mock-upload-icon">+</div>
+              Drop photos here
+            </div>
+            <div class="mock-input" style="background:linear-gradient(135deg,#00D4FF,#0099FF);border-color:transparent;justify-content:center"><span style="color:#000;font-weight:700">Publish Listing</span></div>
+          </div>
+        </div>
+        <div class="step-desc">Snap a photo, set your price and condition, and publish in under 60 seconds.</div>
       </div>
-      <div class="step">
-        <div class="step-icon">💳</div>
-        <div class="step-num">2</div>
-        <h3>Collectors Buy</h3>
-        <p>Buyers bid on cards, claim pack break spots, or buy listings instantly. Secure payments built in.</p>
+
+      <!-- Step 2: Go Live or Sell Fixed -->
+      <div class="step-card">
+        <div class="step-header">
+          <div class="step-num">2</div>
+          <h3>Go Live or Sell Fixed</h3>
+        </div>
+        <div class="step-mockup">
+          <div class="mock-stream">
+            <div class="mock-video">
+              <div class="mock-video-icon">&#9654;</div>
+            </div>
+            <div class="mock-chat">
+              <div class="mock-msg"><span class="name">Jake:</span> Fire pull!</div>
+              <div class="mock-msg"><span class="name">Sara:</span> I need that card</div>
+              <div class="mock-msg"><span class="name">Mike:</span> $300?</div>
+              <div class="mock-msg"><span class="name">Lena:</span> Buying now</div>
+            </div>
+          </div>
+          <div class="mock-buy-bar">
+            <div class="mock-buy-btn primary">Buy Now $249</div>
+            <div class="mock-buy-btn secondary">Watch</div>
+          </div>
+        </div>
+        <div class="step-desc">Stream live with real-time chat and instant buy buttons, or list at a fixed price.</div>
       </div>
-      <div class="step">
-        <div class="step-icon">💰</div>
-        <div class="step-num">3</div>
-        <h3>Get Paid</h3>
-        <p>Money hits your account within 2-3 days. Low fees, no hidden costs. You sell, you earn.</p>
+
+      <!-- Step 3: Collectors Buy Instantly -->
+      <div class="step-card">
+        <div class="step-header">
+          <div class="step-num">3</div>
+          <h3>Collectors Buy Instantly</h3>
+        </div>
+        <div class="step-mockup">
+          <div class="mock-checkout">
+            <div class="mock-checkout-card">
+              <div class="mock-card-img">Charizard VMAX PSA 10</div>
+              <div class="mock-card-info">
+                <h4>Charizard VMAX #074</h4>
+                <p>Seller: CardKing99 &bull; PSA 10</p>
+                <div class="mock-card-price">$249.99</div>
+              </div>
+            </div>
+            <div class="mock-protection">
+              <svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+              Buyer Protection Guaranteed
+            </div>
+            <div class="mock-checkout-btn">Complete Purchase</div>
+          </div>
+        </div>
+        <div class="step-desc">Secure checkout with buyer protection, escrow, and verified grading data.</div>
       </div>
+
+      <!-- Step 4: Get Paid in Days -->
+      <div class="step-card">
+        <div class="step-header">
+          <div class="step-num">4</div>
+          <h3>Get Paid in Days</h3>
+        </div>
+        <div class="step-mockup">
+          <div class="mock-dashboard">
+            <div class="mock-dash-stats">
+              <div class="mock-dash-stat"><div class="val">$1,847</div><div class="label">This Month</div></div>
+              <div class="mock-dash-stat"><div class="val">23</div><div class="label">Sales</div></div>
+              <div class="mock-dash-stat"><div class="val">$6,291</div><div class="label">All Time</div></div>
+              <div class="mock-dash-stat"><div class="val">4.9</div><div class="label">Rating</div></div>
+            </div>
+            <div class="mock-chart" id="mockChart">
+              <div class="mock-chart-bar" style="height:30%"></div>
+              <div class="mock-chart-bar" style="height:45%"></div>
+              <div class="mock-chart-bar" style="height:35%"></div>
+              <div class="mock-chart-bar" style="height:60%"></div>
+              <div class="mock-chart-bar" style="height:80%"></div>
+              <div class="mock-chart-bar" style="height:55%"></div>
+              <div class="mock-chart-bar" style="height:70%"></div>
+              <div class="mock-chart-bar" style="height:90%"></div>
+              <div class="mock-chart-bar" style="height:65%"></div>
+              <div class="mock-chart-bar" style="height:95%"></div>
+            </div>
+          </div>
+        </div>
+        <div class="step-desc">Funds hit your bank in 2-3 days via Stripe. Track every sale in your dashboard.</div>
+      </div>
+
     </div>
   </div>
 </section>
@@ -344,48 +639,235 @@ img{max-width:100%;display:block}
     <p class="section-sub">Every feature designed to help you sell more cards, faster</p>
     <div class="features-grid">
       <div class="feature-card">
-        <div class="feature-icon">🔴</div>
+        <div class="feature-icon">&#128308;</div>
         <h3>Live Streaming</h3>
         <p>Go live in one tap. HD streaming with real-time chat and instant purchases from viewers.</p>
       </div>
       <div class="feature-card">
-        <div class="feature-icon">🏪</div>
+        <div class="feature-icon">&#127978;</div>
         <h3>Marketplace</h3>
         <p>List cards for fixed price or auction. Advanced search, filters, and price history on every card.</p>
       </div>
       <div class="feature-card">
-        <div class="feature-icon">⭐</div>
+        <div class="feature-icon">&#11088;</div>
         <h3>Grading Integration</h3>
         <p>Pull verified grades from PSA, BGS, and CGC directly into your listings. Build trust instantly.</p>
       </div>
       <div class="feature-card">
-        <div class="feature-icon">🎁</div>
+        <div class="feature-icon">&#127873;</div>
         <h3>Pack Break Rooms</h3>
         <p>Host pack breaks with randomized spot selection. Buyers watch live as their packs get opened.</p>
       </div>
       <div class="feature-card">
-        <div class="feature-icon">💸</div>
+        <div class="feature-icon">&#128184;</div>
         <h3>Fiat + Crypto Payments</h3>
         <p>Accept credit cards, PayPal, and crypto. More payment options means more sales.</p>
       </div>
       <div class="feature-card">
-        <div class="feature-icon">📊</div>
+        <div class="feature-icon">&#128202;</div>
         <h3>Seller Dashboard</h3>
         <p>Track sales, views, conversion rates, and revenue. Know exactly how your shop performs.</p>
       </div>
       <div class="feature-card">
-        <div class="feature-icon">🛡️</div>
+        <div class="feature-icon">&#128737;&#65039;</div>
         <h3>Buyer Protection</h3>
         <p>Full refund guarantee on every transaction. Items not as described? Money back, no questions.</p>
       </div>
       <div class="feature-card">
-        <div class="feature-icon">📱</div>
+        <div class="feature-icon">&#128241;</div>
         <h3>Mobile First</h3>
         <p>List, stream, buy, and manage your entire shop from your phone. No desktop required.</p>
       </div>
     </div>
   </div>
 </section>
+
+<!-- Marketplace Preview -->
+<section class="section marketplace-preview">
+  <div class="container">
+    <h2 class="section-title">Sneak Peek: The Marketplace</h2>
+    <p class="section-sub">Here's what buying and selling will look like</p>
+    <div class="preview-grid">
+      <div class="preview-card">
+        <div class="preview-img grad1">
+          <span class="preview-live">LIVE</span>
+          Charizard VMAX<br>Secret Rare
+        </div>
+        <div class="preview-body">
+          <h4>Charizard VMAX #074</h4>
+          <div class="preview-meta">
+            <span class="preview-seller">@CardKing99</span>
+            <span class="preview-condition">PSA 10</span>
+          </div>
+          <div class="preview-price">$849.00</div>
+          <div class="preview-btns">
+            <div class="preview-btn buy">Buy Now</div>
+            <div class="preview-btn watch">Watch Live</div>
+          </div>
+        </div>
+      </div>
+      <div class="preview-card">
+        <div class="preview-img grad2">
+          Pikachu VMAX<br>Rainbow Rare
+        </div>
+        <div class="preview-body">
+          <h4>Pikachu VMAX #188</h4>
+          <div class="preview-meta">
+            <span class="preview-seller">@PikaCollector</span>
+            <span class="preview-condition">BGS 9.5</span>
+          </div>
+          <div class="preview-price">$425.00</div>
+          <div class="preview-btns">
+            <div class="preview-btn buy">Buy Now</div>
+            <div class="preview-btn watch">Details</div>
+          </div>
+        </div>
+      </div>
+      <div class="preview-card">
+        <div class="preview-img grad3">
+          Luka Doncic<br>Prizm Silver
+        </div>
+        <div class="preview-body">
+          <h4>Luka Doncic Prizm Silver</h4>
+          <div class="preview-meta">
+            <span class="preview-seller">@HoopsCards</span>
+            <span class="preview-condition">PSA 9</span>
+          </div>
+          <div class="preview-price">$1,200.00</div>
+          <div class="preview-btns">
+            <div class="preview-btn buy">Buy Now</div>
+            <div class="preview-btn watch">Details</div>
+          </div>
+        </div>
+      </div>
+      <div class="preview-card">
+        <div class="preview-img grad4">
+          Mewtwo GX<br>Full Art
+        </div>
+        <div class="preview-body">
+          <h4>Mewtwo GX Full Art</h4>
+          <div class="preview-meta">
+            <span class="preview-seller">@TCGVault</span>
+            <span class="preview-condition">Raw NM</span>
+          </div>
+          <div class="preview-price">$89.99</div>
+          <div class="preview-btns">
+            <div class="preview-btn buy">Buy Now</div>
+            <div class="preview-btn watch">Details</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Comparison Infographic -->
+<section class="section comparison-section">
+  <div class="container">
+    <h2 class="section-title">Why Sell Party?</h2>
+    <p class="section-sub">See how we stack up against the competition</p>
+    <div class="comparison-table">
+      <table>
+        <thead>
+          <tr>
+            <th></th>
+            <th class="sp-col">Sell Party</th>
+            <th>eBay</th>
+            <th>Whatnot</th>
+            <th>FB Marketplace</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="feature-name">Seller Fees</td>
+            <td class="sp-col"><span class="comp-yes">3-8%</span></td>
+            <td>12.9%+</td>
+            <td>8-10%</td>
+            <td><span class="comp-partial">5% (no cards focus)</span></td>
+          </tr>
+          <tr>
+            <td class="feature-name">Live Streaming</td>
+            <td class="sp-col"><span class="comp-yes">Yes</span></td>
+            <td><span class="comp-no">No</span></td>
+            <td><span class="comp-yes">Yes</span></td>
+            <td><span class="comp-no">No</span></td>
+          </tr>
+          <tr>
+            <td class="feature-name">Buyer Protection</td>
+            <td class="sp-col"><span class="comp-yes">Full + Escrow</span></td>
+            <td><span class="comp-partial">Partial</span></td>
+            <td><span class="comp-yes">Yes</span></td>
+            <td><span class="comp-no">None</span></td>
+          </tr>
+          <tr>
+            <td class="feature-name">Grading Integration</td>
+            <td class="sp-col"><span class="comp-yes">PSA + BGS + CGC</span></td>
+            <td><span class="comp-no">Manual only</span></td>
+            <td><span class="comp-partial">Limited</span></td>
+            <td><span class="comp-no">No</span></td>
+          </tr>
+          <tr>
+            <td class="feature-name">Mobile App</td>
+            <td class="sp-col"><span class="comp-yes">iOS + Android</span></td>
+            <td><span class="comp-yes">Yes</span></td>
+            <td><span class="comp-yes">Yes</span></td>
+            <td><span class="comp-yes">Yes</span></td>
+          </tr>
+          <tr>
+            <td class="feature-name">Payment Speed</td>
+            <td class="sp-col"><span class="comp-yes">2-3 days</span></td>
+            <td><span class="comp-partial">3-5 days</span></td>
+            <td><span class="comp-partial">3-5 days</span></td>
+            <td><span class="comp-partial">Instant (no protection)</span></td>
+          </tr>
+          <tr>
+            <td class="feature-name">Pack Break Rooms</td>
+            <td class="sp-col"><span class="comp-yes">Built-in</span></td>
+            <td><span class="comp-no">No</span></td>
+            <td><span class="comp-yes">Yes</span></td>
+            <td><span class="comp-no">No</span></td>
+          </tr>
+          <tr>
+            <td class="feature-name">Crypto Payments</td>
+            <td class="sp-col"><span class="comp-yes">Yes</span></td>
+            <td><span class="comp-no">No</span></td>
+            <td><span class="comp-no">No</span></td>
+            <td><span class="comp-no">No</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- Daily Spin Wheel -->
+<section class="section spin-section" id="daily-spin">
+  <div class="container">
+    <h2 class="section-title">Daily Rewards</h2>
+    <p class="section-sub">Spin the wheel once every 24 hours for a chance to win prizes</p>
+    <div class="spin-container">
+      <div class="wheel-wrapper">
+        <div class="wheel-pointer"></div>
+        <div class="wheel" id="spinWheel">
+          <!-- Segments rendered via JS -->
+        </div>
+        <div class="wheel-center">&#9733;</div>
+      </div>
+      <button class="spin-btn" id="spinBtn" onclick="spinWheel()">Spin to Win</button>
+      <div class="spin-cooldown" id="spinCooldown"></div>
+    </div>
+  </div>
+</section>
+
+<!-- Spin Result Modal -->
+<div class="spin-modal-overlay" id="spinModalOverlay">
+  <div class="spin-modal">
+    <h3>Congratulations!</h3>
+    <div class="prize-name" id="spinPrizeName"></div>
+    <p>Your reward has been recorded. You can spin again in 24 hours.</p>
+    <button class="spin-modal-close" onclick="closeSpinModal()">Awesome</button>
+  </div>
+</div>
 
 <!-- Seller Tier Pricing -->
 <section class="section" id="pricing">
@@ -477,7 +959,7 @@ img{max-width:100%;display:block}
       <button type="submit" class="form-submit" id="submitBtn">Join the Waitlist</button>
     </form>
     <div class="form-success" id="formSuccess">
-      <h3>You're In! 🎉</h3>
+      <h3>You're In!</h3>
       <p>You're <strong>#<span id="positionNum">0</span></strong> on the waitlist. Share your link to move up!</p>
     </div>
   </div>
@@ -494,9 +976,9 @@ img{max-width:100%;display:block}
         <button class="ref-copy-btn" onclick="copyRefLink()">Copy</button>
       </div>
       <div class="share-btns">
-        <button class="share-btn" onclick="shareX()">𝕏 Share on X</button>
-        <button class="share-btn" onclick="shareWhatsApp()">📱 WhatsApp</button>
-        <button class="share-btn" onclick="copyRefLink()">🔗 Copy Link</button>
+        <button class="share-btn" onclick="shareX()">Share on X</button>
+        <button class="share-btn" onclick="shareWhatsApp()">WhatsApp</button>
+        <button class="share-btn" onclick="copyRefLink()">Copy Link</button>
       </div>
       <div class="ref-stats">
         <div class="ref-stat"><div class="ref-stat-num" id="myReferrals">0</div><div class="ref-stat-label">Your Referrals</div></div>
@@ -550,43 +1032,43 @@ img{max-width:100%;display:block}
     <p class="section-sub">Everything you need to know about Sell Party</p>
     <div class="faq-list">
       <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">What is Sell Party? <span class="arrow">▼</span></button>
+        <button class="faq-q" onclick="toggleFaq(this)">What is Sell Party? <span class="arrow">&#9660;</span></button>
         <div class="faq-a">Sell Party is a live marketplace where Pokemon and Sports card collectors can buy, sell, and break packs in real-time via live streaming. Think Whatnot meets eBay, built specifically for card collectors.</div>
       </div>
       <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">How much does it cost to sell? <span class="arrow">▼</span></button>
+        <button class="faq-q" onclick="toggleFaq(this)">How much does it cost to sell? <span class="arrow">&#9660;</span></button>
         <div class="faq-a">Sell Party offers three tiers: Free (8% transaction fee), Pro at $29/month (5% fee), and Premium at $99/month (3% fee). Payment processing is 2.9% across all tiers (passed through at cost via Stripe).</div>
       </div>
       <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">What types of cards can I sell? <span class="arrow">▼</span></button>
+        <button class="faq-q" onclick="toggleFaq(this)">What types of cards can I sell? <span class="arrow">&#9660;</span></button>
         <div class="faq-a">Pokemon TCG, Sports cards (baseball, basketball, football, hockey), Yu-Gi-Oh!, Magic: The Gathering, and other trading card games. Both graded (PSA, BGS, CGC) and raw cards are welcome.</div>
       </div>
       <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">How do live card breaks work? <span class="arrow">▼</span></button>
+        <button class="faq-q" onclick="toggleFaq(this)">How do live card breaks work? <span class="arrow">&#9660;</span></button>
         <div class="faq-a">Sellers list pack break events. Buyers purchase spots before the break starts. The seller goes live, opens packs on camera, and cards are assigned to spot holders in real-time. Cards ship directly to buyers.</div>
       </div>
       <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">What grading companies are supported? <span class="arrow">▼</span></button>
+        <button class="faq-q" onclick="toggleFaq(this)">What grading companies are supported? <span class="arrow">&#9660;</span></button>
         <div class="faq-a">We integrate with PSA (Professional Sports Authenticator), BGS (Beckett Grading Services), and CGC (Certified Guaranty Company) for verified grading data on listings.</div>
       </div>
       <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">How do I get paid? <span class="arrow">▼</span></button>
+        <button class="faq-q" onclick="toggleFaq(this)">How do I get paid? <span class="arrow">&#9660;</span></button>
         <div class="faq-a">Payments are processed via Stripe Connect. Sellers receive funds directly to their bank account within 2-3 business days after a completed sale. Crypto payouts are also planned.</div>
       </div>
       <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">Is there buyer protection? <span class="arrow">▼</span></button>
+        <button class="faq-q" onclick="toggleFaq(this)">Is there buyer protection? <span class="arrow">&#9660;</span></button>
         <div class="faq-a">Yes. All transactions include buyer protection. If an item isn't as described or doesn't arrive, buyers get a full refund. We hold funds in escrow until delivery is confirmed.</div>
       </div>
       <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">Can I sell on mobile? <span class="arrow">▼</span></button>
+        <button class="faq-q" onclick="toggleFaq(this)">Can I sell on mobile? <span class="arrow">&#9660;</span></button>
         <div class="faq-a">Absolutely. Sell Party is mobile-first. Go live, list cards, manage orders, and run your entire shop from your phone. Native apps for iOS and Android are planned.</div>
       </div>
       <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">How does the referral program work? <span class="arrow">▼</span></button>
+        <button class="faq-q" onclick="toggleFaq(this)">How does the referral program work? <span class="arrow">&#9660;</span></button>
         <div class="faq-a">After joining the waitlist, you get a unique referral link. Each person who signs up through your link moves you up 10 spots. The top 100 referrers get lifetime Pro for free. The top 10 get lifetime Premium.</div>
       </div>
       <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">When does Sell Party launch? <span class="arrow">▼</span></button>
+        <button class="faq-q" onclick="toggleFaq(this)">When does Sell Party launch? <span class="arrow">&#9660;</span></button>
         <div class="faq-a">We're currently in the waitlist phase building our community. Join the waitlist to secure your spot and earn rewards through our referral program. Launch updates will be sent via email.</div>
       </div>
     </div>
@@ -598,9 +1080,13 @@ img{max-width:100%;display:block}
   <div class="container">
     <div class="newsletter-box">
       <h2 style="font-size:1.5rem;font-weight:800;margin-bottom:8px">Sell Party Insider</h2>
-      <p style="color:var(--muted);margin-bottom:24px;font-size:.95rem">Get launch updates, card market insights, and seller tips. No spam.</p>
-      <div id="beehiivEmbed">
-        <iframe src="https://embeds.beehiiv.com/universal" data-test-id="beehiiv-embed" height="52" frameborder="0" scrolling="no" style="width:100%;border-radius:8px;margin:0;background:transparent"></iframe>
+      <p style="color:var(--muted);margin-bottom:4px;font-size:.95rem">Get launch updates, card market insights, and seller tips. No spam.</p>
+      <div id="newsletterContainer">
+        <form class="newsletter-form" id="newsletterForm">
+          <input type="email" class="newsletter-input" id="newsletterEmail" placeholder="Enter your email" required>
+          <button type="submit" class="newsletter-submit" id="newsletterSubmitBtn">Subscribe</button>
+        </form>
+        <div class="newsletter-success" id="newsletterSuccess">You're subscribed! We'll keep you in the loop.</div>
       </div>
     </div>
   </div>
@@ -663,6 +1149,8 @@ const db = firebase.database();
 const waitlistRef = db.ref('sellparty/waitlist');
 const statsRef = db.ref('sellparty/stats');
 const leaderboardRef = db.ref('sellparty/leaderboard');
+const newsletterRef = db.ref('sellparty/newsletter');
+const spinsRef = db.ref('sellparty/spins');
 
 // State
 let userData = JSON.parse(localStorage.getItem('sellparty_user') || 'null');
@@ -747,7 +1235,6 @@ document.getElementById('waitlistForm').addEventListener('submit', async (e) => 
   // Check for duplicate email
   const existing = await waitlistRef.orderByChild('email').equalTo(email).once('value');
   if (existing.exists()) {
-    // Load existing user
     existing.forEach(child => {
       userData = { ...child.val(), id: child.key };
     });
@@ -825,7 +1312,6 @@ function showSuccess() {
 // Check if already signed up
 function checkExisting() {
   if (userData) {
-    // Refresh from Firebase
     if (userData.id) {
       waitlistRef.child(userData.id).once('value', snap => {
         if (snap.exists()) {
@@ -852,13 +1338,13 @@ function copyRefLink() {
 }
 
 function shareX() {
-  const text = encodeURIComponent(`I just joined the Sell Party waitlist — the live marketplace for Pokemon & Sports card collectors. Join me: sell.party?ref=${userData.referralCode}`);
+  const text = encodeURIComponent(`I just joined the Sell Party waitlist \u2014 the live marketplace for Pokemon & Sports card collectors. Join me: sell.party?ref=${userData.referralCode}`);
   window.open(`https://x.com/intent/tweet?text=${text}`, '_blank');
   trackEvent('social_share', { platform: 'x' });
 }
 
 function shareWhatsApp() {
-  const text = encodeURIComponent(`Check out Sell Party — live marketplace for card collectors! Join the waitlist: sell.party?ref=${userData.referralCode}`);
+  const text = encodeURIComponent(`Check out Sell Party \u2014 live marketplace for card collectors! Join the waitlist: sell.party?ref=${userData.referralCode}`);
   window.open(`https://wa.me/?text=${text}`, '_blank');
   trackEvent('social_share', { platform: 'whatsapp' });
 }
@@ -895,6 +1381,171 @@ function copyAddr(el) {
   setTimeout(() => el.textContent = orig, 1500);
 }
 
+// Newsletter
+(function initNewsletter() {
+  // Check if already subscribed
+  if (localStorage.getItem('sellparty_newsletter')) {
+    document.getElementById('newsletterForm').style.display = 'none';
+    document.getElementById('newsletterSuccess').style.display = 'block';
+    document.getElementById('newsletterSuccess').textContent = 'Already subscribed! We\'ll keep you in the loop.';
+    return;
+  }
+
+  document.getElementById('newsletterForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const btn = document.getElementById('newsletterSubmitBtn');
+    const email = document.getElementById('newsletterEmail').value.trim().toLowerCase();
+    if (!email) return;
+
+    btn.disabled = true;
+    btn.textContent = 'Subscribing...';
+
+    try {
+      await newsletterRef.push().set({
+        email: email,
+        timestamp: Date.now(),
+        source: 'sell.party'
+      });
+      localStorage.setItem('sellparty_newsletter', email);
+      document.getElementById('newsletterForm').style.display = 'none';
+      document.getElementById('newsletterSuccess').style.display = 'block';
+      trackEvent('newsletter_signup', { email_domain: email.split('@')[1] });
+    } catch (err) {
+      btn.disabled = false;
+      btn.textContent = 'Subscribe';
+      console.error('Newsletter error:', err);
+    }
+  });
+})();
+
+// Spin Wheel
+const SPIN_PRIZES = [
+  { label: '500 BONUS', color: '#FFD700' },
+  { label: 'Early Access', color: '#00D4FF' },
+  { label: 'Free Month Pro', color: '#22c55e' },
+  { label: '2X Referral Pts', color: '#a855f7' },
+  { label: 'Mystery Prize', color: '#FF6B35' },
+  { label: 'Seller Badge', color: '#ec4899' },
+  { label: '100 BONUS', color: '#FFD700' },
+  { label: 'VIP Status', color: '#00D4FF' }
+];
+
+function buildWheel() {
+  const wheel = document.getElementById('spinWheel');
+  const segCount = SPIN_PRIZES.length;
+  const segAngle = 360 / segCount;
+  let html = '';
+  for (let i = 0; i < segCount; i++) {
+    const rotation = segAngle * i;
+    const p = SPIN_PRIZES[i];
+    // Use conic-gradient approach via individual colored segments
+    html += `<div class="wheel-segment" style="transform:rotate(${rotation}deg);clip-path:polygon(50% 50%, ${50 + 50 * Math.sin(0)}% ${50 - 50 * Math.cos(0)}%, ${50 + 50 * Math.sin(segAngle * Math.PI / 180)}% ${50 - 50 * Math.cos(segAngle * Math.PI / 180)}%);">
+      <div class="wheel-segment-inner" style="background:${p.color};">${p.label}</div>
+    </div>`;
+  }
+  // Use conic-gradient for cleaner rendering
+  const gradientStops = SPIN_PRIZES.map((p, i) => {
+    const start = (i / segCount) * 100;
+    const end = ((i + 1) / segCount) * 100;
+    return `${p.color} ${start}% ${end}%`;
+  }).join(', ');
+  wheel.style.background = `conic-gradient(from -22.5deg, ${gradientStops})`;
+  wheel.innerHTML = '';
+
+  // Add labels
+  for (let i = 0; i < segCount; i++) {
+    const angle = (segAngle * i) + (segAngle / 2) - 90;
+    const rad = angle * Math.PI / 180;
+    const x = 50 + 35 * Math.cos(rad);
+    const y = 50 + 35 * Math.sin(rad);
+    const label = document.createElement('div');
+    label.style.cssText = `position:absolute;left:${x}%;top:${y}%;transform:translate(-50%,-50%) rotate(${angle + 90}deg);font-size:.55rem;font-weight:800;color:#000;text-align:center;line-height:1.1;width:60px;pointer-events:none;text-shadow:0 0 2px rgba(255,255,255,.3)`;
+    label.textContent = SPIN_PRIZES[i].label;
+    wheel.appendChild(label);
+  }
+}
+
+function checkSpinCooldown() {
+  const lastSpin = localStorage.getItem('sellparty_lastSpin');
+  const btn = document.getElementById('spinBtn');
+  const cooldownEl = document.getElementById('spinCooldown');
+  if (!lastSpin) { btn.disabled = false; cooldownEl.textContent = ''; return; }
+
+  const elapsed = Date.now() - parseInt(lastSpin);
+  const remaining = (24 * 60 * 60 * 1000) - elapsed;
+
+  if (remaining <= 0) {
+    btn.disabled = false;
+    cooldownEl.textContent = '';
+  } else {
+    btn.disabled = true;
+    const hrs = Math.floor(remaining / 3600000);
+    const mins = Math.floor((remaining % 3600000) / 60000);
+    cooldownEl.textContent = `Next spin in ${hrs}h ${mins}m`;
+  }
+}
+
+function spinWheel() {
+  const btn = document.getElementById('spinBtn');
+  const lastSpin = localStorage.getItem('sellparty_lastSpin');
+  if (lastSpin && (Date.now() - parseInt(lastSpin)) < 24 * 60 * 60 * 1000) {
+    checkSpinCooldown();
+    return;
+  }
+
+  btn.disabled = true;
+  const wheel = document.getElementById('spinWheel');
+  const segAngle = 360 / SPIN_PRIZES.length;
+
+  // Pick random prize
+  const prizeIndex = Math.floor(Math.random() * SPIN_PRIZES.length);
+  // Calculate rotation: multiple full spins + land on prize segment
+  // Pointer is at top (0 deg). Segment i center is at segAngle*i + segAngle/2
+  // We need to rotate so that prize segment's center aligns with top
+  const prizeAngle = segAngle * prizeIndex + segAngle / 2;
+  const extraSpins = 360 * (5 + Math.floor(Math.random() * 3));
+  const totalRotation = extraSpins + (360 - prizeAngle);
+
+  // Reset transition, set initial rotation to 0
+  wheel.style.transition = 'none';
+  wheel.style.transform = 'rotate(0deg)';
+
+  // Force reflow
+  wheel.offsetHeight;
+
+  // Spin
+  wheel.style.transition = 'transform 4s cubic-bezier(.17,.67,.12,.99)';
+  wheel.style.transform = `rotate(${totalRotation}deg)`;
+
+  // After spin completes
+  setTimeout(() => {
+    const prize = SPIN_PRIZES[prizeIndex];
+    localStorage.setItem('sellparty_lastSpin', Date.now().toString());
+
+    // Show result modal
+    document.getElementById('spinPrizeName').textContent = prize.label;
+    document.getElementById('spinModalOverlay').classList.add('active');
+
+    // Save to Firebase
+    spinsRef.push().set({
+      prize: prize.label,
+      prizeIndex: prizeIndex,
+      timestamp: Date.now(),
+      userId: userData ? userData.id : 'anonymous'
+    });
+
+    trackEvent('spin_wheel', { prize: prize.label });
+    checkSpinCooldown();
+  }, 4200);
+}
+
+function closeSpinModal() {
+  document.getElementById('spinModalOverlay').classList.remove('active');
+}
+document.getElementById('spinModalOverlay').addEventListener('click', (e) => {
+  if (e.target === e.currentTarget) closeSpinModal();
+});
+
 // Track visitor
 function trackVisitor() {
   statsRef.child('totalVisitors').once('value', snap => {
@@ -910,11 +1561,20 @@ document.addEventListener('DOMContentLoaded', () => {
   loadLeaderboard();
   checkExisting();
   trackVisitor();
+  buildWheel();
+  checkSpinCooldown();
+
+  // Refresh spin cooldown every minute
+  setInterval(checkSpinCooldown, 60000);
 
   // Store ref param for later
   const ref = getRefParam();
   if (ref) localStorage.setItem('sellparty_ref', ref);
 });
+</script>
+<!-- Watermark Protection -->
+<script>
+(function(){var b='sell.party',t='Sell Party';function w(){var c=document.createElement('canvas');c.width=300;c.height=150;var x=c.getContext('2d');x.save();x.translate(150,75);x.rotate(-.44);x.font='600 18px Arial';x.fillStyle='rgba(255,255,255,0.04)';x.textAlign='center';x.fillText(t,0,-10);x.font='400 12px Arial';x.fillStyle='rgba(255,255,255,0.03)';x.fillText(b,0,10);x.restore();var d=document.createElement('div');d.id='_spw';d.setAttribute('data-sp','1');Object.assign(d.style,{position:'fixed',top:'0',left:'0',width:'100vw',height:'100vh',pointerEvents:'none',zIndex:'2147483647',backgroundImage:'url('+c.toDataURL()+')',backgroundRepeat:'repeat',opacity:'1',userSelect:'none'});document.body.appendChild(d);new MutationObserver(function(){if(!document.getElementById('_spw'))w()}).observe(document.body,{childList:true,subtree:true})}setInterval(function(){var e=document.getElementById('_spw');if(!e)w();else{e.style.display='';e.style.visibility='';e.style.opacity='1'}},2000);document.addEventListener('DOMContentLoaded',function(){w()})})();
 </script>
 </body>
 </html>
