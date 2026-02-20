@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0a0f"/>
+      <stop offset="100%" style="stop-color:#111118"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f59e0b"/>
+      <stop offset="100%" style="stop-color:#fbbf24"/>
+    </linearGradient>
+    <linearGradient id="purple" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#8b5cf6"/>
+      <stop offset="100%" style="stop-color:#a78bfa"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="40%" r="50%">
+      <stop offset="0%" style="stop-color:#8b5cf6;stop-opacity:0.15"/>
+      <stop offset="100%" style="stop-color:#0a0a0f;stop-opacity:0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#glow)"/>
+  <!-- Cards illustration -->
+  <rect x="380" y="80" width="120" height="170" rx="12" fill="#16161d" stroke="#1f1f28" stroke-width="2" transform="rotate(-15 440 165)"/>
+  <rect x="440" y="60" width="120" height="170" rx="12" fill="#16161d" stroke="#8b5cf6" stroke-width="2" transform="rotate(-5 500 145)"/>
+  <rect x="510" y="50" width="120" height="170" rx="12" fill="#16161d" stroke="#f59e0b" stroke-width="2" transform="rotate(5 570 135)"/>
+  <rect x="580" y="60" width="120" height="170" rx="12" fill="#16161d" stroke="#1f1f28" stroke-width="2" transform="rotate(15 640 145)"/>
+  <!-- Stars on cards -->
+  <text x="500" y="160" fill="#f59e0b" font-size="40" text-anchor="middle" transform="rotate(-5 500 145)">★</text>
+  <text x="570" y="150" fill="#8b5cf6" font-size="40" text-anchor="middle" transform="rotate(5 570 135)">★</text>
+  <!-- Live badge -->
+  <rect x="530" y="40" width="80" height="30" rx="15" fill="#ef4444"/>
+  <circle cx="552" cy="55" r="5" fill="#fff"/>
+  <text x="575" y="61" fill="#fff" font-family="Arial,sans-serif" font-weight="700" font-size="14">LIVE</text>
+  <!-- Logo text -->
+  <text x="600" y="350" text-anchor="middle" font-family="Arial,sans-serif" font-weight="900" font-size="80">
+    <tspan fill="url(#gold)">Sell</tspan><tspan fill="url(#purple)">Stream</tspan>
+  </text>
+  <!-- Tagline -->
+  <text x="600" y="410" text-anchor="middle" font-family="Arial,sans-serif" font-weight="400" font-size="28" fill="#71717a">Live Marketplace for Card Collectors</text>
+  <!-- CTA -->
+  <rect x="440" y="450" width="320" height="56" rx="28" fill="#8b5cf6"/>
+  <text x="600" y="486" text-anchor="middle" font-family="Arial,sans-serif" font-weight="700" font-size="20" fill="#fff">Join the Waitlist</text>
+  <!-- URL -->
+  <text x="600" y="560" text-anchor="middle" font-family="Arial,sans-serif" font-weight="600" font-size="20" fill="#f59e0b">sellstream.com</text>
+</svg>

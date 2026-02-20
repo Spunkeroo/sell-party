@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SellStream — Live Marketplace for Pokemon & Sports Cards</title>
+<meta name="description" content="The live marketplace where card collectors buy, sell, and break packs in real-time. Pokemon, Sports, TCG — go live, sell cards, get paid instantly.">
+<meta name="keywords" content="sell pokemon cards online, live card breaks, pokemon card marketplace, sports card auction, TCG marketplace, pack breaks, card grading, PSA grading">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://sellstream.com/">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://sellstream.com/">
+<meta property="og:title" content="SellStream — Live Marketplace for Pokemon & Sports Cards">
+<meta property="og:description" content="Go live. Sell cards. Get paid. The real-time marketplace for Pokemon & Sports card collectors.">
+<meta property="og:image" content="https://sellstream.com/og.svg">
+<meta property="og:site_name" content="SellStream">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="SellStream — Live Marketplace for Pokemon & Sports Cards">
+<meta name="twitter:description" content="Go live. Sell cards. Get paid. The real-time marketplace for Pokemon & Sports card collectors.">
+<meta name="twitter:image" content="https://sellstream.com/og.svg">
+
+<!-- JSON-LD: WebSite -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "SellStream",
+  "url": "https://sellstream.com",
+  "description": "Live marketplace for Pokemon & Sports card collectors",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://sellstream.com/?q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+
+<!-- JSON-LD: Organization -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "SellStream",
+  "url": "https://sellstream.com",
+  "logo": "https://sellstream.com/og.svg",
+  "description": "The live marketplace for Pokemon & Sports card collectors"
+}
+</script>
+
+<!-- JSON-LD: FAQPage -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type": "Question", "name": "What is SellStream?", "acceptedAnswer": {"@type": "Answer", "text": "SellStream is a live marketplace where Pokemon and Sports card collectors can buy, sell, and break packs in real-time via live streaming."}},
+    {"@type": "Question", "name": "How much does it cost to sell on SellStream?", "acceptedAnswer": {"@type": "Answer", "text": "SellStream offers a Free tier with 8% transaction fees, Pro at $29/month with 5% fees, and Premium at $99/month with just 3% fees."}},
+    {"@type": "Question", "name": "What types of cards can I sell?", "acceptedAnswer": {"@type": "Answer", "text": "Pokemon TCG, Sports cards (baseball, basketball, football, hockey), and other trading card games. All graded and raw cards welcome."}},
+    {"@type": "Question", "name": "How do live card breaks work?", "acceptedAnswer": {"@type": "Answer", "text": "Sellers open packs live on stream. Buyers purchase spots or packs before the break. Cards are shown live and shipped directly to buyers."}},
+    {"@type": "Question", "name": "What grading companies are supported?", "acceptedAnswer": {"@type": "Answer", "text": "We integrate with PSA, BGS (Beckett), and CGC for verified grading data on listings."}},
+    {"@type": "Question", "name": "How do I get paid?", "acceptedAnswer": {"@type": "Answer", "text": "Payments are processed via Stripe. Sellers receive funds directly to their bank account within 2-3 business days after a sale."}},
+    {"@type": "Question", "name": "Is there buyer protection?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. All transactions include buyer protection with full refund guarantee if items aren't as described or don't arrive."}},
+    {"@type": "Question", "name": "Can I sell on mobile?", "acceptedAnswer": {"@type": "Answer", "text": "Absolutely. SellStream is mobile-first. Go live, list cards, and manage your shop from any device."}},
+    {"@type": "Question", "name": "What's the referral program?", "acceptedAnswer": {"@type": "Answer", "text": "Share your unique referral link. Each signup moves you up 10 spots on the waitlist. Top 100 get lifetime Pro, top 10 get lifetime Premium."}},
+    {"@type": "Question", "name": "When does SellStream launch?", "acceptedAnswer": {"@type": "Answer", "text": "We're currently in waitlist phase. Join now to secure your spot and earn rewards through our referral program."}}
+  ]
+}
+</script>
+
+<!-- GA4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GVNL11PEGP"></script>
+<script>
+window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+gtag('js',new Date());gtag('config','G-GVNL11PEGP');
+function trackEvent(name,params){gtag('event',name,params||{});}
+</script>
+
+<!-- Firebase -->
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#0a0a0f;--surface:#111118;--card:#16161d;--border:#1f1f28;
+  --text:#e5e5e8;--muted:#71717a;--primary:#8b5cf6;--secondary:#3b82f6;
+  --accent:#f59e0b;--success:#22c55e;--danger:#ef4444;
+  --radius:12px;--max-w:1200px;
+}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden}
+a{color:var(--primary);text-decoration:none;transition:color .2s}
+a:hover{color:var(--accent)}
+img{max-width:100%;display:block}
+.container{max-width:var(--max-w);margin:0 auto;padding:0 20px}
+
+/* Nav */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,10,15,.9);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:16px 0}
+.nav .container{display:flex;align-items:center;justify-content:space-between}
+.logo{font-size:1.5rem;font-weight:800;letter-spacing:-.02em}
+.logo-sell{background:linear-gradient(135deg,var(--accent),#fbbf24);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.logo-stream{background:linear-gradient(135deg,var(--primary),#a78bfa);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.nav-cta{background:var(--primary);color:#fff;border:none;padding:10px 24px;border-radius:99px;font-weight:600;font-size:.9rem;cursor:pointer;transition:all .2s}
+.nav-cta:hover{background:#7c3aed;transform:translateY(-1px);box-shadow:0 4px 20px rgba(139,92,246,.4)}
+
+/* Hero */
+.hero{padding:140px 0 80px;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:800px;height:800px;background:radial-gradient(circle,rgba(139,92,246,.12) 0%,transparent 70%);pointer-events:none}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:var(--surface);border:1px solid var(--border);border-radius:99px;padding:8px 20px;font-size:.85rem;color:var(--muted);margin-bottom:24px}
+.hero-badge .dot{width:8px;height:8px;border-radius:50%;background:var(--success);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.hero h1{font-size:clamp(2.5rem,6vw,4.5rem);font-weight:900;line-height:1.1;margin-bottom:16px;letter-spacing:-.03em}
+.hero h1 .gold{background:linear-gradient(135deg,var(--accent),#fbbf24,var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero h1 .purple{background:linear-gradient(135deg,var(--primary),#a78bfa);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-sub{font-size:clamp(1rem,2vw,1.25rem);color:var(--muted);max-width:600px;margin:0 auto 40px}
+.hero-stats{display:flex;justify-content:center;gap:40px;margin-bottom:40px;flex-wrap:wrap}
+.stat{text-align:center}
+.stat-num{font-size:2rem;font-weight:800;color:var(--accent)}
+.stat-label{font-size:.8rem;color:var(--muted);text-transform:uppercase;letter-spacing:.1em}
+.hero-cta{display:inline-flex;align-items:center;gap:10px;background:linear-gradient(135deg,var(--primary),var(--secondary));color:#fff;border:none;padding:16px 40px;border-radius:99px;font-size:1.1rem;font-weight:700;cursor:pointer;transition:all .3s;box-shadow:0 4px 30px rgba(139,92,246,.3)}
+.hero-cta:hover{transform:translateY(-2px);box-shadow:0 8px 40px rgba(139,92,246,.5)}
+.hero-cta svg{width:20px;height:20px}
+
+/* Live Counter Bar */
+.live-bar{background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:16px 0;text-align:center}
+.live-bar .container{display:flex;justify-content:center;gap:40px;flex-wrap:wrap}
+.live-stat{display:flex;align-items:center;gap:8px;font-size:.95rem}
+.live-stat .dot{width:8px;height:8px;border-radius:50%;background:var(--success);animation:pulse 2s infinite}
+.live-stat strong{color:var(--accent);font-weight:700}
+
+/* Sections */
+.section{padding:80px 0}
+.section-title{font-size:clamp(1.5rem,3vw,2.5rem);font-weight:800;text-align:center;margin-bottom:12px;letter-spacing:-.02em}
+.section-sub{text-align:center;color:var(--muted);max-width:600px;margin:0 auto 48px;font-size:1.05rem}
+
+/* How It Works */
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:32px}
+.step{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:40px 32px;text-align:center;transition:all .3s;position:relative}
+.step:hover{border-color:var(--primary);transform:translateY(-4px);box-shadow:0 8px 30px rgba(139,92,246,.15)}
+.step-num{width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,var(--primary),var(--secondary));color:#fff;font-weight:800;font-size:1.2rem;display:flex;align-items:center;justify-content:center;margin:0 auto 20px}
+.step h3{font-size:1.25rem;font-weight:700;margin-bottom:8px}
+.step p{color:var(--muted);font-size:.95rem}
+.step-icon{font-size:2.5rem;margin-bottom:16px}
+
+/* Features Grid */
+.features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px}
+.feature-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:32px;transition:all .3s}
+.feature-card:hover{border-color:var(--primary);transform:translateY(-2px)}
+.feature-icon{font-size:2rem;margin-bottom:16px}
+.feature-card h3{font-size:1.1rem;font-weight:700;margin-bottom:8px}
+.feature-card p{color:var(--muted);font-size:.9rem}
+
+/* Pricing */
+.pricing-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px;max-width:1000px;margin:0 auto}
+.price-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:40px 32px;text-align:center;transition:all .3s;position:relative}
+.price-card.featured{border-color:var(--primary);box-shadow:0 0 40px rgba(139,92,246,.15)}
+.price-card.featured::before{content:'MOST POPULAR';position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--primary);color:#fff;padding:4px 16px;border-radius:99px;font-size:.75rem;font-weight:700;letter-spacing:.05em}
+.price-name{font-size:1.1rem;font-weight:600;color:var(--muted);margin-bottom:8px}
+.price-amount{font-size:3rem;font-weight:900;margin-bottom:4px}
+.price-amount span{font-size:1rem;font-weight:400;color:var(--muted)}
+.price-fee{font-size:1.1rem;color:var(--accent);font-weight:700;margin-bottom:24px}
+.price-features{list-style:none;text-align:left;margin-bottom:32px}
+.price-features li{padding:8px 0;border-bottom:1px solid var(--border);font-size:.9rem;display:flex;align-items:center;gap:10px}
+.price-features li::before{content:'✓';color:var(--success);font-weight:700}
+.price-features li.no::before{content:'—';color:var(--muted)}
+.price-btn{width:100%;padding:14px;border-radius:99px;border:none;font-weight:700;font-size:1rem;cursor:pointer;transition:all .2s}
+.price-btn-primary{background:var(--primary);color:#fff}
+.price-btn-primary:hover{background:#7c3aed}
+.price-btn-outline{background:transparent;color:var(--text);border:1px solid var(--border)}
+.price-btn-outline:hover{border-color:var(--primary);color:var(--primary)}
+
+/* Waitlist Form */
+.waitlist-section{background:var(--surface)}
+.waitlist-form{max-width:500px;margin:0 auto;display:flex;flex-direction:column;gap:16px}
+.form-group{display:flex;flex-direction:column;gap:6px}
+.form-group label{font-size:.85rem;font-weight:600;color:var(--muted)}
+.form-input{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:14px 16px;font-size:1rem;color:var(--text);font-family:inherit;transition:border-color .2s;outline:none}
+.form-input:focus{border-color:var(--primary)}
+.form-input::placeholder{color:var(--muted)}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.form-select{appearance:none;background:var(--card) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M6 8L1 3h10z' fill='%2371717a'/%3E%3C/svg%3E") no-repeat right 16px center;cursor:pointer}
+.form-submit{background:linear-gradient(135deg,var(--primary),var(--secondary));color:#fff;border:none;padding:16px;border-radius:99px;font-size:1.1rem;font-weight:700;cursor:pointer;transition:all .3s}
+.form-submit:hover{transform:translateY(-2px);box-shadow:0 4px 20px rgba(139,92,246,.4)}
+.form-submit:disabled{opacity:.6;cursor:not-allowed;transform:none}
+.form-success{text-align:center;display:none}
+.form-success h3{font-size:1.5rem;font-weight:800;margin-bottom:8px;color:var(--success)}
+.form-success p{color:var(--muted);margin-bottom:24px}
+
+/* Referral */
+.referral-section{background:var(--bg)}
+.referral-box{max-width:600px;margin:0 auto;text-align:center}
+.ref-link-box{display:flex;align-items:center;gap:8px;background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:12px 16px;margin-bottom:20px}
+.ref-link-box input{flex:1;background:none;border:none;color:var(--accent);font-size:1rem;font-family:monospace;outline:none}
+.ref-copy-btn{background:var(--primary);color:#fff;border:none;padding:8px 20px;border-radius:8px;font-weight:600;cursor:pointer;transition:all .2s;white-space:nowrap}
+.ref-copy-btn:hover{background:#7c3aed}
+.share-btns{display:flex;justify-content:center;gap:12px;margin-bottom:32px;flex-wrap:wrap}
+.share-btn{padding:10px 24px;border-radius:99px;border:1px solid var(--border);background:var(--card);color:var(--text);font-weight:600;font-size:.9rem;cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:8px}
+.share-btn:hover{border-color:var(--primary);background:var(--surface)}
+.ref-stats{display:flex;justify-content:center;gap:40px;margin-bottom:32px}
+.ref-stat{text-align:center}
+.ref-stat-num{font-size:1.5rem;font-weight:800;color:var(--primary)}
+.ref-stat-label{font-size:.8rem;color:var(--muted)}
+
+/* Leaderboard */
+.leaderboard{max-width:500px;margin:0 auto}
+.leaderboard h3{text-align:center;font-size:1.25rem;margin-bottom:16px}
+.lb-entry{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;border-bottom:1px solid var(--border);font-size:.9rem}
+.lb-entry:first-child{color:var(--accent);font-weight:700}
+.lb-rank{width:30px;font-weight:700;color:var(--primary)}
+.lb-name{flex:1}
+.lb-refs{font-weight:700;color:var(--accent)}
+
+/* Revenue Transparency */
+.transparency{background:var(--surface)}
+.transparency-content{max-width:700px;margin:0 auto;text-align:center}
+.transparency-content .big-text{font-size:clamp(1.3rem,2.5vw,1.8rem);font-weight:700;margin-bottom:24px;line-height:1.4}
+.fee-breakdown{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-top:32px}
+.fee-item{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:24px;text-align:center}
+.fee-item h4{font-size:.9rem;color:var(--muted);margin-bottom:4px}
+.fee-item .fee-val{font-size:1.5rem;font-weight:800;color:var(--accent)}
+
+/* FAQ */
+.faq-list{max-width:700px;margin:0 auto}
+.faq-item{border-bottom:1px solid var(--border)}
+.faq-q{width:100%;background:none;border:none;color:var(--text);font-size:1rem;font-weight:600;padding:20px 0;text-align:left;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-family:inherit}
+.faq-q:hover{color:var(--primary)}
+.faq-q .arrow{transition:transform .3s;color:var(--muted)}
+.faq-q.active .arrow{transform:rotate(180deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .3s ease;color:var(--muted);font-size:.95rem;line-height:1.7}
+.faq-a.open{max-height:300px;padding-bottom:20px}
+
+/* Newsletter */
+.newsletter{background:var(--bg);text-align:center}
+.newsletter-box{max-width:500px;margin:0 auto;background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:40px 32px}
+
+/* Tip Modal */
+.tip-overlay{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.7);z-index:200;display:none;align-items:center;justify-content:center;backdrop-filter:blur(4px)}
+.tip-overlay.active{display:flex}
+.tip-modal{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:40px;max-width:480px;width:90%;max-height:80vh;overflow-y:auto;position:relative}
+.tip-modal h3{font-size:1.3rem;font-weight:800;margin-bottom:20px;text-align:center}
+.tip-close{position:absolute;top:16px;right:16px;background:none;border:none;color:var(--muted);font-size:1.5rem;cursor:pointer}
+.tip-close:hover{color:var(--text)}
+.tip-addr{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:12px;margin-bottom:16px}
+.tip-addr label{font-size:.8rem;color:var(--muted);display:block;margin-bottom:4px;font-weight:600}
+.tip-addr code{font-size:.8rem;word-break:break-all;color:var(--accent);cursor:pointer}
+.tip-addr code:hover{color:var(--primary)}
+
+/* Footer */
+.footer{background:var(--surface);border-top:1px solid var(--border);padding:40px 0;text-align:center}
+.footer-links{display:flex;justify-content:center;gap:24px;margin-bottom:16px;flex-wrap:wrap}
+.footer-links a{color:var(--muted);font-size:.9rem}
+.footer-links a:hover{color:var(--primary)}
+.footer-copy{color:var(--muted);font-size:.8rem}
+.footer-tip-btn{background:none;border:1px solid var(--border);color:var(--muted);padding:8px 20px;border-radius:99px;font-size:.85rem;cursor:pointer;margin-top:12px;transition:all .2s}
+.footer-tip-btn:hover{border-color:var(--accent);color:var(--accent)}
+
+/* Responsive */
+@media(max-width:768px){
+  .hero{padding:120px 0 60px}
+  .hero-stats{gap:24px}
+  .form-row{grid-template-columns:1fr}
+  .ref-stats{gap:20px}
+  .live-bar .container{gap:20px}
+  .pricing-grid{grid-template-columns:1fr;max-width:400px}
+}
+@media(max-width:480px){
+  .nav .container{padding:0 16px}
+  .container{padding:0 16px}
+  .section{padding:60px 0}
+}
+</style>
+</head>
+<body>
+
+<!-- Nav -->
+<nav class="nav">
+  <div class="container">
+    <div class="logo"><span class="logo-sell">Sell</span><span class="logo-stream">Stream</span></div>
+    <button class="nav-cta" onclick="scrollToWaitlist()">Join Waitlist</button>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-badge"><span class="dot"></span> Launching Soon</div>
+    <h1><span class="gold">Sell Cards.</span> <span class="purple">Live.</span></h1>
+    <p class="hero-sub">The live marketplace where Pokemon &amp; Sports card collectors buy, sell, and break packs in real-time. Go live. Get paid.</p>
+    <div class="hero-stats">
+      <div class="stat"><div class="stat-num" id="heroCollectors">0</div><div class="stat-label">Collectors Waiting</div></div>
+      <div class="stat"><div class="stat-num" id="heroReferrals">0</div><div class="stat-label">Referrals Made</div></div>
+    </div>
+    <button class="hero-cta" onclick="scrollToWaitlist()">
+      Join the Waitlist
+      <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+    </button>
+  </div>
+</section>
+
+<!-- Live Counter Bar -->
+<div class="live-bar">
+  <div class="container">
+    <div class="live-stat"><span class="dot"></span> <strong id="liveCollectors">0</strong>&nbsp;collectors on the waitlist</div>
+    <div class="live-stat"><span class="dot"></span> <strong id="liveReferrals">0</strong>&nbsp;referrals and counting</div>
+  </div>
+</div>
+
+<!-- How It Works -->
+<section class="section">
+  <div class="container">
+    <h2 class="section-title">How It Works</h2>
+    <p class="section-sub">Three steps to start selling your cards to collectors worldwide</p>
+    <div class="steps">
+      <div class="step">
+        <div class="step-icon">📹</div>
+        <div class="step-num">1</div>
+        <h3>Go Live</h3>
+        <p>Start a live stream from any device. Show your cards, open packs, and engage with collectors in real-time.</p>
+      </div>
+      <div class="step">
+        <div class="step-icon">💳</div>
+        <div class="step-num">2</div>
+        <h3>Collectors Buy</h3>
+        <p>Buyers bid on cards, claim pack break spots, or buy listings instantly. Secure payments built in.</p>
+      </div>
+      <div class="step">
+        <div class="step-icon">💰</div>
+        <div class="step-num">3</div>
+        <h3>Get Paid</h3>
+        <p>Money hits your account within 2-3 days. Low fees, no hidden costs. You sell, you earn.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Features Grid -->
+<section class="section" style="background:var(--surface)">
+  <div class="container">
+    <h2 class="section-title">Built for Card Collectors</h2>
+    <p class="section-sub">Every feature designed to help you sell more cards, faster</p>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">🔴</div>
+        <h3>Live Streaming</h3>
+        <p>Go live in one tap. HD streaming with real-time chat and instant purchases from viewers.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🏪</div>
+        <h3>Marketplace</h3>
+        <p>List cards for fixed price or auction. Advanced search, filters, and price history on every card.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">⭐</div>
+        <h3>Grading Integration</h3>
+        <p>Pull verified grades from PSA, BGS, and CGC directly into your listings. Build trust instantly.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🎁</div>
+        <h3>Pack Break Rooms</h3>
+        <p>Host pack breaks with randomized spot selection. Buyers watch live as their packs get opened.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">💸</div>
+        <h3>Fiat + Crypto Payments</h3>
+        <p>Accept credit cards, PayPal, and crypto. More payment options means more sales.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📊</div>
+        <h3>Seller Dashboard</h3>
+        <p>Track sales, views, conversion rates, and revenue. Know exactly how your shop performs.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🛡️</div>
+        <h3>Buyer Protection</h3>
+        <p>Full refund guarantee on every transaction. Items not as described? Money back, no questions.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📱</div>
+        <h3>Mobile First</h3>
+        <p>List, stream, buy, and manage your entire shop from your phone. No desktop required.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Seller Tier Pricing -->
+<section class="section" id="pricing">
+  <div class="container">
+    <h2 class="section-title">Seller Plans</h2>
+    <p class="section-sub">Start free. Upgrade as you grow. We make money when you make money.</p>
+    <div class="pricing-grid">
+      <div class="price-card">
+        <div class="price-name">Free</div>
+        <div class="price-amount">$0<span>/mo</span></div>
+        <div class="price-fee">8% transaction fee</div>
+        <ul class="price-features">
+          <li>10 live streams / month</li>
+          <li>50 active listings</li>
+          <li>720p stream quality</li>
+          <li>Basic analytics</li>
+          <li>Community support</li>
+          <li class="no">Featured placements</li>
+        </ul>
+        <button class="price-btn price-btn-outline" onclick="scrollToWaitlist()">Join Waitlist</button>
+      </div>
+      <div class="price-card featured">
+        <div class="price-name">Pro</div>
+        <div class="price-amount">$29<span>/mo</span></div>
+        <div class="price-fee">5% transaction fee</div>
+        <ul class="price-features">
+          <li>Unlimited live streams</li>
+          <li>500 active listings</li>
+          <li>1080p stream quality</li>
+          <li>Advanced analytics</li>
+          <li>Email support</li>
+          <li>2 featured spots / week</li>
+        </ul>
+        <button class="price-btn price-btn-primary" onclick="scrollToWaitlist()">Join Waitlist</button>
+      </div>
+      <div class="price-card">
+        <div class="price-name">Premium</div>
+        <div class="price-amount">$99<span>/mo</span></div>
+        <div class="price-fee">3% transaction fee</div>
+        <ul class="price-features">
+          <li>Unlimited live streams</li>
+          <li>Unlimited listings</li>
+          <li>4K stream quality</li>
+          <li>Enterprise analytics</li>
+          <li>Phone + Slack support</li>
+          <li>1 featured spot / day</li>
+        </ul>
+        <button class="price-btn price-btn-outline" onclick="scrollToWaitlist()">Join Waitlist</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Waitlist Signup Form -->
+<section class="section waitlist-section" id="waitlist">
+  <div class="container">
+    <h2 class="section-title">Join the Waitlist</h2>
+    <p class="section-sub">Be first in line when we launch. Refer friends to move up.</p>
+    <form class="waitlist-form" id="waitlistForm">
+      <div class="form-group">
+        <label for="wlName">Your Name</label>
+        <input type="text" id="wlName" class="form-input" placeholder="Full name" required>
+      </div>
+      <div class="form-group">
+        <label for="wlEmail">Email Address</label>
+        <input type="email" id="wlEmail" class="form-input" placeholder="you@email.com" required>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="wlRole">I am a...</label>
+          <select id="wlRole" class="form-input form-select" required>
+            <option value="">Select role</option>
+            <option value="seller">Seller</option>
+            <option value="buyer">Buyer</option>
+            <option value="both">Both</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="wlInterest">Interested in...</label>
+          <select id="wlInterest" class="form-input form-select" required>
+            <option value="">Select interest</option>
+            <option value="pokemon">Pokemon</option>
+            <option value="sports">Sports Cards</option>
+            <option value="tcg">Other TCG</option>
+            <option value="all">All of the above</option>
+          </select>
+        </div>
+      </div>
+      <button type="submit" class="form-submit" id="submitBtn">Join the Waitlist</button>
+    </form>
+    <div class="form-success" id="formSuccess">
+      <h3>You're In! 🎉</h3>
+      <p>You're <strong>#<span id="positionNum">0</span></strong> on the waitlist. Share your link to move up!</p>
+    </div>
+  </div>
+</section>
+
+<!-- Referral System -->
+<section class="section referral-section" id="referral" style="display:none">
+  <div class="container">
+    <h2 class="section-title">Move Up the Waitlist</h2>
+    <p class="section-sub">Each referral moves you up 10 spots. Top 100 get lifetime Pro. Top 10 get lifetime Premium.</p>
+    <div class="referral-box">
+      <div class="ref-link-box">
+        <input type="text" id="refLink" readonly>
+        <button class="ref-copy-btn" onclick="copyRefLink()">Copy</button>
+      </div>
+      <div class="share-btns">
+        <button class="share-btn" onclick="shareX()">𝕏 Share on X</button>
+        <button class="share-btn" onclick="shareWhatsApp()">📱 WhatsApp</button>
+        <button class="share-btn" onclick="copyRefLink()">🔗 Copy Link</button>
+      </div>
+      <div class="ref-stats">
+        <div class="ref-stat"><div class="ref-stat-num" id="myReferrals">0</div><div class="ref-stat-label">Your Referrals</div></div>
+        <div class="ref-stat"><div class="ref-stat-num" id="myPosition">0</div><div class="ref-stat-label">Your Position</div></div>
+      </div>
+    </div>
+
+    <!-- Leaderboard -->
+    <div class="leaderboard">
+      <h3>Top Referrers</h3>
+      <div id="leaderboardList">
+        <div class="lb-entry" style="color:var(--muted);text-align:center;padding:20px">Be the first to refer someone!</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Revenue Transparency -->
+<section class="section transparency">
+  <div class="container">
+    <div class="transparency-content">
+      <h2 class="section-title">Transparent Fees</h2>
+      <p class="big-text">We make money when you make money. No hidden fees, no surprises.</p>
+      <p class="section-sub" style="margin-bottom:32px">Every dollar you earn is tracked. You always know exactly what you're paying and why.</p>
+      <div class="fee-breakdown">
+        <div class="fee-item">
+          <h4>Free Tier Fee</h4>
+          <div class="fee-val">8%</div>
+        </div>
+        <div class="fee-item">
+          <h4>Pro Tier Fee</h4>
+          <div class="fee-val">5%</div>
+        </div>
+        <div class="fee-item">
+          <h4>Premium Tier Fee</h4>
+          <div class="fee-val">3%</div>
+        </div>
+        <div class="fee-item">
+          <h4>Payment Processing</h4>
+          <div class="fee-val">2.9%</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section" id="faq">
+  <div class="container">
+    <h2 class="section-title">Frequently Asked Questions</h2>
+    <p class="section-sub">Everything you need to know about SellStream</p>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">What is SellStream? <span class="arrow">▼</span></button>
+        <div class="faq-a">SellStream is a live marketplace where Pokemon and Sports card collectors can buy, sell, and break packs in real-time via live streaming. Think Whatnot meets eBay, built specifically for card collectors.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">How much does it cost to sell? <span class="arrow">▼</span></button>
+        <div class="faq-a">SellStream offers three tiers: Free (8% transaction fee), Pro at $29/month (5% fee), and Premium at $99/month (3% fee). Payment processing is 2.9% across all tiers (passed through at cost via Stripe).</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">What types of cards can I sell? <span class="arrow">▼</span></button>
+        <div class="faq-a">Pokemon TCG, Sports cards (baseball, basketball, football, hockey), Yu-Gi-Oh!, Magic: The Gathering, and other trading card games. Both graded (PSA, BGS, CGC) and raw cards are welcome.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">How do live card breaks work? <span class="arrow">▼</span></button>
+        <div class="faq-a">Sellers list pack break events. Buyers purchase spots before the break starts. The seller goes live, opens packs on camera, and cards are assigned to spot holders in real-time. Cards ship directly to buyers.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">What grading companies are supported? <span class="arrow">▼</span></button>
+        <div class="faq-a">We integrate with PSA (Professional Sports Authenticator), BGS (Beckett Grading Services), and CGC (Certified Guaranty Company) for verified grading data on listings.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">How do I get paid? <span class="arrow">▼</span></button>
+        <div class="faq-a">Payments are processed via Stripe Connect. Sellers receive funds directly to their bank account within 2-3 business days after a completed sale. Crypto payouts are also planned.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Is there buyer protection? <span class="arrow">▼</span></button>
+        <div class="faq-a">Yes. All transactions include buyer protection. If an item isn't as described or doesn't arrive, buyers get a full refund. We hold funds in escrow until delivery is confirmed.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Can I sell on mobile? <span class="arrow">▼</span></button>
+        <div class="faq-a">Absolutely. SellStream is mobile-first. Go live, list cards, manage orders, and run your entire shop from your phone. Native apps for iOS and Android are planned.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">How does the referral program work? <span class="arrow">▼</span></button>
+        <div class="faq-a">After joining the waitlist, you get a unique referral link. Each person who signs up through your link moves you up 10 spots. The top 100 referrers get lifetime Pro for free. The top 10 get lifetime Premium.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">When does SellStream launch? <span class="arrow">▼</span></button>
+        <div class="faq-a">We're currently in the waitlist phase building our community. Join the waitlist to secure your spot and earn rewards through our referral program. Launch updates will be sent via email.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Newsletter -->
+<section class="section newsletter">
+  <div class="container">
+    <div class="newsletter-box">
+      <h2 style="font-size:1.5rem;font-weight:800;margin-bottom:8px">SellStream Insider</h2>
+      <p style="color:var(--muted);margin-bottom:24px;font-size:.95rem">Get launch updates, card market insights, and seller tips. No spam.</p>
+      <div id="beehiivEmbed">
+        <iframe src="https://embeds.beehiiv.com/universal" data-test-id="beehiiv-embed" height="52" frameborder="0" scrolling="no" style="width:100%;border-radius:8px;margin:0;background:transparent"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Tip Modal -->
+<div class="tip-overlay" id="tipOverlay">
+  <div class="tip-modal">
+    <button class="tip-close" onclick="closeTip()">&times;</button>
+    <h3>Support SellStream</h3>
+    <p style="color:var(--muted);text-align:center;margin-bottom:20px;font-size:.9rem">Help us build the best card marketplace</p>
+    <div class="tip-addr">
+      <label>BTC</label>
+      <code onclick="copyAddr(this)">bc1qr4zcdh9wz26gtn4pqz9c8wmxwalpjut8fxzsfn</code>
+    </div>
+    <div class="tip-addr">
+      <label>ETH</label>
+      <code onclick="copyAddr(this)">0xD2aC89253b5F20f5b03b5B591297Fa4FCC37d41c</code>
+    </div>
+    <div class="tip-addr">
+      <label>SOL</label>
+      <code onclick="copyAddr(this)">Cds2aUuhyJa4NaZo7JER7LakW4VmmfnqVixHusrKKZsm</code>
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-links">
+      <a href="privacy.html">Privacy</a>
+      <a href="privacy.html#terms">Terms</a>
+      <a href="privacy.html#affiliates">Affiliates</a>
+      <a href="#faq">FAQ</a>
+    </div>
+    <div class="footer-links" style="margin-bottom:12px;margin-top:4px">
+      <a href="https://spunkart.com" target="_blank">SpunkArt</a>
+      <a href="https://spunk.bet" target="_blank">Spunk.Bet</a>
+      <a href="https://predict.horse" target="_blank">Predict Network</a>
+      <a href="https://scam.blue" target="_blank">Scam.Blue</a>
+      <a href="https://stimulant.cloud" target="_blank">Stimulant</a>
+      <a href="https://aibot.mom" target="_blank">AiBot</a>
+    </div>
+    <p class="footer-copy">&copy; 2026 SellStream. All rights reserved.</p>
+    <button class="footer-tip-btn" onclick="openTip()">Support Us</button>
+  </div>
+</footer>
+
+<script>
+// Firebase Init
+const firebaseConfig = {
+  apiKey: "AIzaSyDummyKeyHere",
+  databaseURL: "https://predict-network-ec767-default-rtdb.firebaseio.com",
+  projectId: "predict-network-ec767"
+};
+firebase.initializeApp(firebaseConfig);
+const db = firebase.database();
+
+// Refs
+const waitlistRef = db.ref('sellstream/waitlist');
+const statsRef = db.ref('sellstream/stats');
+const leaderboardRef = db.ref('sellstream/leaderboard');
+
+// State
+let userData = JSON.parse(localStorage.getItem('sellstream_user') || 'null');
+
+// Generate referral code
+function genRefCode() {
+  const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+  let code = '';
+  for (let i = 0; i < 8; i++) code += chars[Math.floor(Math.random() * chars.length)];
+  return code;
+}
+
+// Get ref param from URL
+function getRefParam() {
+  const params = new URLSearchParams(window.location.search);
+  return params.get('ref') || '';
+}
+
+// Init counters
+function initCounters() {
+  statsRef.on('value', snap => {
+    const stats = snap.val() || { totalSignups: 0, totalReferrals: 0 };
+    const signups = stats.totalSignups || 0;
+    const refs = stats.totalReferrals || 0;
+    animateCounter('heroCollectors', signups);
+    animateCounter('heroReferrals', refs);
+    document.getElementById('liveCollectors').textContent = signups.toLocaleString();
+    document.getElementById('liveReferrals').textContent = refs.toLocaleString();
+  });
+}
+
+function animateCounter(id, target) {
+  const el = document.getElementById(id);
+  const current = parseInt(el.textContent.replace(/,/g, '')) || 0;
+  if (current === target) return;
+  const step = Math.max(1, Math.floor((target - current) / 30));
+  let val = current;
+  const timer = setInterval(() => {
+    val += step;
+    if (val >= target) { val = target; clearInterval(timer); }
+    el.textContent = val.toLocaleString();
+  }, 30);
+}
+
+// Load leaderboard
+function loadLeaderboard() {
+  leaderboardRef.orderByChild('referrals').limitToLast(10).on('value', snap => {
+    const entries = [];
+    snap.forEach(child => { entries.push({ ...child.val(), id: child.key }); });
+    entries.reverse();
+    const container = document.getElementById('leaderboardList');
+    if (entries.length === 0) {
+      container.innerHTML = '<div class="lb-entry" style="color:var(--muted);text-align:center;padding:20px">Be the first to refer someone!</div>';
+      return;
+    }
+    container.innerHTML = entries.map((e, i) =>
+      `<div class="lb-entry"><span class="lb-rank">#${i + 1}</span><span class="lb-name">${escapeHtml(e.name || 'Anonymous')}</span><span class="lb-refs">${e.referrals || 0} refs</span></div>`
+    ).join('');
+  });
+}
+
+function escapeHtml(str) {
+  const div = document.createElement('div');
+  div.textContent = str;
+  return div.innerHTML;
+}
+
+// Form submit
+document.getElementById('waitlistForm').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const btn = document.getElementById('submitBtn');
+  btn.disabled = true;
+  btn.textContent = 'Joining...';
+
+  const name = document.getElementById('wlName').value.trim();
+  const email = document.getElementById('wlEmail').value.trim().toLowerCase();
+  const role = document.getElementById('wlRole').value;
+  const interests = document.getElementById('wlInterest').value;
+  const referredBy = getRefParam();
+  const referralCode = genRefCode();
+
+  // Check for duplicate email
+  const existing = await waitlistRef.orderByChild('email').equalTo(email).once('value');
+  if (existing.exists()) {
+    // Load existing user
+    existing.forEach(child => {
+      userData = { ...child.val(), id: child.key };
+    });
+    localStorage.setItem('sellstream_user', JSON.stringify(userData));
+    showSuccess();
+    return;
+  }
+
+  // Get current position
+  const statsSnap = await statsRef.once('value');
+  const currentStats = statsSnap.val() || { totalSignups: 0, totalReferrals: 0 };
+  const position = (currentStats.totalSignups || 0) + 1;
+
+  // Save to Firebase
+  const newRef = waitlistRef.push();
+  const entry = {
+    email,
+    name,
+    role,
+    interests,
+    referralCode,
+    referredBy,
+    position,
+    referralCount: 0,
+    timestamp: Date.now()
+  };
+  await newRef.set(entry);
+
+  // Update stats
+  await statsRef.update({
+    totalSignups: position,
+    totalVisitors: firebase.database.ServerValue.increment(0)
+  });
+
+  // If referred, credit the referrer
+  if (referredBy) {
+    const referrerSnap = await waitlistRef.orderByChild('referralCode').equalTo(referredBy).once('value');
+    if (referrerSnap.exists()) {
+      referrerSnap.forEach(child => {
+        const referrerData = child.val();
+        const newCount = (referrerData.referralCount || 0) + 1;
+        const newPosition = Math.max(1, referrerData.position - 10);
+        child.ref.update({ referralCount: newCount, position: newPosition });
+
+        // Update leaderboard
+        leaderboardRef.child(child.key).set({
+          name: referrerData.name,
+          referrals: newCount,
+          position: newPosition
+        });
+      });
+      await statsRef.update({
+        totalReferrals: firebase.database.ServerValue.increment(1)
+      });
+    }
+  }
+
+  userData = { ...entry, id: newRef.key };
+  localStorage.setItem('sellstream_user', JSON.stringify(userData));
+
+  trackEvent('waitlist_signup', { role, interests, referred: !!referredBy });
+  showSuccess();
+});
+
+function showSuccess() {
+  document.getElementById('waitlistForm').style.display = 'none';
+  document.getElementById('formSuccess').style.display = 'block';
+  document.getElementById('positionNum').textContent = userData.position;
+  document.getElementById('refLink').value = `sellstream.com?ref=${userData.referralCode}`;
+  document.getElementById('myReferrals').textContent = userData.referralCount || 0;
+  document.getElementById('myPosition').textContent = `#${userData.position}`;
+  document.getElementById('referral').style.display = 'block';
+}
+
+// Check if already signed up
+function checkExisting() {
+  if (userData) {
+    // Refresh from Firebase
+    if (userData.id) {
+      waitlistRef.child(userData.id).once('value', snap => {
+        if (snap.exists()) {
+          userData = { ...snap.val(), id: snap.key };
+          localStorage.setItem('sellstream_user', JSON.stringify(userData));
+          showSuccess();
+        }
+      });
+    } else {
+      showSuccess();
+    }
+  }
+}
+
+// Sharing
+function copyRefLink() {
+  const input = document.getElementById('refLink');
+  navigator.clipboard.writeText(input.value).then(() => {
+    const btn = input.nextElementSibling;
+    btn.textContent = 'Copied!';
+    setTimeout(() => btn.textContent = 'Copy', 2000);
+  });
+  trackEvent('referral_click', { method: 'copy' });
+}
+
+function shareX() {
+  const text = encodeURIComponent(`I just joined the SellStream waitlist — the live marketplace for Pokemon & Sports card collectors. Join me: sellstream.com?ref=${userData.referralCode}`);
+  window.open(`https://x.com/intent/tweet?text=${text}`, '_blank');
+  trackEvent('social_share', { platform: 'x' });
+}
+
+function shareWhatsApp() {
+  const text = encodeURIComponent(`Check out SellStream — live marketplace for card collectors! Join the waitlist: sellstream.com?ref=${userData.referralCode}`);
+  window.open(`https://wa.me/?text=${text}`, '_blank');
+  trackEvent('social_share', { platform: 'whatsapp' });
+}
+
+// FAQ
+function toggleFaq(btn) {
+  const answer = btn.nextElementSibling;
+  const isOpen = answer.classList.contains('open');
+  document.querySelectorAll('.faq-a').forEach(a => a.classList.remove('open'));
+  document.querySelectorAll('.faq-q').forEach(q => q.classList.remove('active'));
+  if (!isOpen) {
+    answer.classList.add('open');
+    btn.classList.add('active');
+    trackEvent('faq_open', { question: btn.textContent.trim() });
+  }
+}
+
+// Scroll
+function scrollToWaitlist() {
+  document.getElementById('waitlist').scrollIntoView({ behavior: 'smooth' });
+}
+
+// Tip modal
+function openTip() { document.getElementById('tipOverlay').classList.add('active'); }
+function closeTip() { document.getElementById('tipOverlay').classList.remove('active'); }
+document.getElementById('tipOverlay').addEventListener('click', (e) => {
+  if (e.target === e.currentTarget) closeTip();
+});
+
+function copyAddr(el) {
+  navigator.clipboard.writeText(el.textContent);
+  const orig = el.textContent;
+  el.textContent = 'Copied!';
+  setTimeout(() => el.textContent = orig, 1500);
+}
+
+// Track visitor
+function trackVisitor() {
+  statsRef.child('totalVisitors').once('value', snap => {
+    const current = snap.val() || 0;
+    statsRef.update({ totalVisitors: current + 1 });
+  });
+  trackEvent('page_view');
+}
+
+// Init
+document.addEventListener('DOMContentLoaded', () => {
+  initCounters();
+  loadLeaderboard();
+  checkExisting();
+  trackVisitor();
+
+  // Store ref param for later
+  const ref = getRefParam();
+  if (ref) localStorage.setItem('sellstream_ref', ref);
+});
+</script>
+</body>
+</html>

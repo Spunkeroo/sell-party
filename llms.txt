@@ -1,0 +1,34 @@
+# SellStream
+
+> Live marketplace for Pokemon & Sports card collectors
+
+SellStream is a live streaming marketplace where card collectors buy, sell, and break packs in real-time. Think Whatnot meets eBay, built for the card collecting community.
+
+## Features
+- Live streaming sales with real-time chat and bidding
+- Fixed-price and auction-style marketplace listings
+- Pack break rooms with randomized spot selection
+- PSA, BGS, and CGC grading integration
+- Fiat and cryptocurrency payments
+- Seller dashboard with analytics
+- Full buyer protection on every transaction
+- Mobile-first design
+
+## Seller Tiers
+- Free: $0/mo, 8% transaction fee, 50 listings, 10 streams/mo
+- Pro: $29/mo, 5% transaction fee, 500 listings, unlimited streams
+- Premium: $99/mo, 3% transaction fee, unlimited everything
+
+## Card Categories
+- Pokemon TCG
+- Sports Cards (Baseball, Basketball, Football, Hockey)
+- Yu-Gi-Oh!
+- Magic: The Gathering
+- Other Trading Card Games
+
+## Status
+Currently in waitlist phase. Join at https://sellstream.com
+
+## Links
+- Website: https://sellstream.com
+- Privacy: https://sellstream.com/privacy.html
