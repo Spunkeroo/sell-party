@@ -1133,6 +1133,12 @@ img{max-width:100%;display:block}
       <a href="https://stimulant.mom" target="_blank">Stimulant</a>
       <a href="https://aibot.beer" target="_blank">AiBot</a>
       <a href="https://aliens.cam" target="_blank">Aliens</a>
+      <a href="https://flip.ink" target="_blank">Flip Ink</a>
+      <a href="https://flip.courses" target="_blank">Flip Courses</a>
+      <a href="https://flip.garden" target="_blank">Flip Garden</a>
+      <a href="https://flip.gay" target="_blank">Flip Gay</a>
+      <a href="https://pizza.christmas" target="_blank">Pizza Xmas</a>
+      <a href="https://pizza.singles" target="_blank">Pizza Singles</a>
     </div>
     <p class="footer-copy">&copy; 2026 Sell Party. All rights reserved.</p>
     <button class="footer-tip-btn" onclick="openTip()">Support Us</button>
@@ -1570,6 +1576,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Refresh spin cooldown every minute
   setInterval(checkSpinCooldown, 60000);
+
+  // Auto-refresh stats every 10 seconds
+  setInterval(function(){
+    statsRef.once('value', function(snap){
+      var d = snap.val() || {};
+      var s = d.totalSignups || 0;
+      var r = d.totalReferrals || 0;
+      animateCounter('heroCollectors', s);
+      animateCounter('heroReferrals', r);
+      document.getElementById('liveCollectors').textContent = s.toLocaleString();
+      document.getElementById('liveReferrals').textContent = r.toLocaleString();
+    });
+  }, 10000);
 
   // Store ref param for later
   const ref = getRefParam();
