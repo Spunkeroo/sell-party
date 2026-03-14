@@ -26,7 +26,7 @@
 <link rel="dns-prefetch" href="https://www.gstatic.com">
 
 <!-- Content-Security-Policy -->
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.gstatic.com https://www.google-analytics.com https://spunk.codes https://www.clarity.ms https://*.clarity.ms; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; connect-src https://predict-network-ec767-default-rtdb.firebaseio.com https://www.google-analytics.com https://www.googletagmanager.com https://*.clarity.ms; img-src 'self' data: https:; frame-src 'none';">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.gstatic.com https://www.google-analytics.com https://spunk.codes https://spunkart.com https://pagead2.googlesyndication.com https://www.clarity.ms https://*.clarity.ms; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; connect-src https://predict-network-ec767-default-rtdb.firebaseio.com https://www.google-analytics.com https://www.googletagmanager.com https://*.clarity.ms; img-src 'self' data: https:; frame-src 'none';">
 
 <!-- Open Graph -->
 <meta property="og:type" content="website">
@@ -1144,6 +1144,217 @@ img{max-width:100%;display:block}
     </div>
   </div>
 </div>
+
+<!-- Card Supplies Store -->
+<section id="card-supplies" style="padding:80px 0 40px">
+  <div class="container">
+    <h2 style="text-align:center;font-size:2rem;margin-bottom:8px">Card Supplies Store</h2>
+    <p style="text-align:center;color:var(--muted);margin-bottom:40px;max-width:600px;margin-left:auto;margin-right:auto">Everything you need to protect, store, and display your collection. Top-rated supplies used by professional collectors.</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:20px" id="suppliesGrid"></div>
+  </div>
+</section>
+<script>
+(function(){
+  var products=[
+    {name:'Ultra Pro Card Sleeves 200ct',asin:'B07CQGQK5M',price:'$6–$9',cat:'Sleeves',grad:'linear-gradient(135deg,#00D4FF 0%,#0066cc 100%)'},
+    {name:'Dragon Shield Matte Sleeves',asin:'B00XB1B6ZQ',price:'$9–$13',cat:'Sleeves',grad:'linear-gradient(135deg,#22c55e 0%,#15803d 100%)'},
+    {name:'Ultra Pro Top Loaders',asin:'B000Y3XKGG',price:'$8–$14',cat:'Protection',grad:'linear-gradient(135deg,#a855f7 0%,#7c3aed 100%)'},
+    {name:'BCW Card Saver',asin:'B07T7JYKL4',price:'$12–$18',cat:'Protection',grad:'linear-gradient(135deg,#FFD700 0%,#cc9900 100%)'},
+    {name:'Ultra Pro 9-Pocket Binder',asin:'B000F3S7FI',price:'$15–$25',cat:'Binders',grad:'linear-gradient(135deg,#FF6B35 0%,#cc4400 100%)'},
+    {name:'BCW Card Storage Box',asin:'B002KDNAU2',price:'$3–$8',cat:'Storage',grad:'linear-gradient(135deg,#ec4899 0%,#be185d 100%)'},
+    {name:'Vault X 12-Pocket Binder',asin:'B07QK9TNTX',price:'$20–$30',cat:'Binders',grad:'linear-gradient(135deg,#00D4FF 0%,#0891b2 100%)'},
+    {name:'Ultra Pro One-Touch Cases',asin:'B01B80M244',price:'$10–$18',cat:'Display',grad:'linear-gradient(135deg,#FFD700 0%,#b8860b 100%)'},
+    {name:'Card Display Stand',asin:'B07G7BFPSY',price:'$8–$15',cat:'Display',grad:'linear-gradient(135deg,#22c55e 0%,#059669 100%)'},
+    {name:'UV Card Protectors',asin:'B003UNHBUI',price:'$6–$12',cat:'Protection',grad:'linear-gradient(135deg,#a855f7 0%,#6d28d9 100%)'},
+    {name:'Grading Card Submission Kit',asin:'B09WDVG8QH',price:'$15–$25',cat:'Grading',grad:'linear-gradient(135deg,#ef4444 0%,#b91c1c 100%)'},
+    {name:'Magnifying Loupe for Grading',asin:'B07DCRXPWJ',price:'$10–$20',cat:'Grading',grad:'linear-gradient(135deg,#FF6B35 0%,#ea580c 100%)'}
+  ];
+  var grid=document.getElementById('suppliesGrid');
+  products.forEach(function(p){
+    var card=document.createElement('div');
+    card.style.cssText='background:var(--card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;transition:transform .2s,box-shadow .2s';
+    card.onmouseenter=function(){this.style.transform='translateY(-4px)';this.style.boxShadow='0 8px 30px rgba(0,212,255,.15)'};
+    card.onmouseleave=function(){this.style.transform='';this.style.boxShadow=''};
+    card.innerHTML='<div style="height:140px;background:'+p.grad+';display:flex;align-items:center;justify-content:center;font-size:2.5rem;position:relative"><span style="opacity:.3;font-size:3rem">📦</span><span style="position:absolute;top:8px;right:8px;background:rgba(0,0,0,.5);color:#fff;font-size:.65rem;padding:2px 8px;border-radius:20px">'+p.cat+'</span></div>'
+      +'<div style="padding:16px"><h3 style="font-size:.9rem;margin-bottom:6px;line-height:1.3">'+p.name+'</h3>'
+      +'<p style="color:var(--primary);font-weight:700;margin-bottom:12px;font-size:.95rem">'+p.price+'</p>'
+      +'<a href="https://www.amazon.com/dp/'+p.asin+'?tag=spunk01-20" target="_blank" rel="noopener" onclick="trackEvent(\'affiliate_click\',{product:\''+p.name.replace(/'/g,"\\'")+'\',store:\'amazon\'})" style="display:block;text-align:center;background:var(--primary);color:#000;padding:10px;border-radius:8px;font-weight:700;font-size:.85rem;text-decoration:none;transition:opacity .2s" onmouseenter="this.style.opacity=\'.85\'" onmouseleave="this.style.opacity=\'1\'">Buy on Amazon</a></div>';
+    grid.appendChild(card);
+  });
+})();
+</script>
+
+<!-- Card Value Checker -->
+<section id="card-value" style="padding:60px 0">
+  <div class="container" style="max-width:700px">
+    <h2 style="text-align:center;font-size:2rem;margin-bottom:8px">Card Value Checker</h2>
+    <p style="text-align:center;color:var(--muted);margin-bottom:30px">Look up the current market value of any card instantly.</p>
+    <div style="background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:30px">
+      <div style="display:grid;grid-template-columns:1fr 2fr;gap:12px;margin-bottom:16px">
+        <select id="vcCategory" style="padding:12px;border-radius:8px;border:1px solid var(--border);background:var(--surface);color:var(--text);font-size:.95rem">
+          <option value="Pokemon">Pokemon</option>
+          <option value="Sports">Sports Cards</option>
+          <option value="Yu-Gi-Oh">Yu-Gi-Oh</option>
+          <option value="Magic">Magic: The Gathering</option>
+        </select>
+        <input type="text" id="vcCardName" placeholder="Enter card name (e.g. Charizard VMAX)" style="padding:12px;border-radius:8px;border:1px solid var(--border);background:var(--surface);color:var(--text);font-size:.95rem">
+      </div>
+      <button onclick="checkCardValue()" style="width:100%;padding:14px;background:var(--primary);color:#000;border:none;border-radius:8px;font-size:1rem;font-weight:700;cursor:pointer;transition:opacity .2s" onmouseenter="this.style.opacity='.85'" onmouseleave="this.style.opacity='1'">Check Value</button>
+      <div id="vcResults" style="display:none;margin-top:20px;padding-top:20px;border-top:1px solid var(--border)">
+        <p style="color:var(--muted);margin-bottom:14px;font-size:.85rem">Search results for <strong id="vcResultName" style="color:var(--text)"></strong>:</p>
+        <div style="display:grid;gap:10px">
+          <a id="vcTcg" href="#" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:10px;background:var(--surface);padding:14px 18px;border-radius:8px;border:1px solid var(--border);text-decoration:none;transition:border-color .2s" onmouseenter="this.style.borderColor='var(--primary)'" onmouseleave="this.style.borderColor='var(--border)'">
+            <span style="font-size:1.3rem">🔍</span>
+            <span><strong style="color:var(--text)">TCGPlayer</strong><br><span style="color:var(--muted);font-size:.8rem">Market prices & recent sales</span></span>
+          </a>
+          <a id="vcEbay" href="#" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:10px;background:var(--surface);padding:14px 18px;border-radius:8px;border:1px solid var(--border);text-decoration:none;transition:border-color .2s" onmouseenter="this.style.borderColor='var(--primary)'" onmouseleave="this.style.borderColor='var(--border)'">
+            <span style="font-size:1.3rem">🏷️</span>
+            <span><strong style="color:var(--text)">eBay Sold Listings</strong><br><span style="color:var(--muted);font-size:.8rem">Real recent sale prices</span></span>
+          </a>
+          <a id="vcAmazon" href="#" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:10px;background:var(--surface);padding:14px 18px;border-radius:8px;border:1px solid var(--border);text-decoration:none;transition:border-color .2s" onmouseenter="this.style.borderColor='var(--primary)'" onmouseleave="this.style.borderColor='var(--border)'">
+            <span style="font-size:1.3rem">📦</span>
+            <span><strong style="color:var(--text)">Amazon</strong><br><span style="color:var(--muted);font-size:.8rem">Buy now pricing</span></span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<script>
+function checkCardValue(){
+  var cat=document.getElementById('vcCategory').value;
+  var name=document.getElementById('vcCardName').value.trim();
+  if(!name){document.getElementById('vcCardName').style.borderColor='var(--danger)';setTimeout(function(){document.getElementById('vcCardName').style.borderColor='var(--border)'},2000);return;}
+  var q=encodeURIComponent(cat+' '+name);
+  document.getElementById('vcResultName').textContent=cat+' — '+name;
+  document.getElementById('vcTcg').href='https://www.tcgplayer.com/search/all/product?q='+q;
+  document.getElementById('vcEbay').href='https://www.ebay.com/sch/i.html?_nkw='+q+'&LH_Complete=1&LH_Sold=1';
+  document.getElementById('vcAmazon').href='https://www.amazon.com/s?k='+q+'&tag=spunk01-20';
+  document.getElementById('vcResults').style.display='block';
+  trackEvent('card_value_check',{category:cat,card:name});
+}
+document.getElementById('vcCardName').addEventListener('keydown',function(e){if(e.key==='Enter')checkCardValue()});
+</script>
+
+<!-- Spin to Win Card Supplies -->
+<section id="spin-supplies" style="padding:60px 0">
+  <div class="container" style="max-width:500px;text-align:center">
+    <h2 style="font-size:2rem;margin-bottom:8px">Spin to Win Card Supplies!</h2>
+    <p style="color:var(--muted);margin-bottom:30px">One free spin per day. Win card supplies, tools, and more!</p>
+    <div style="position:relative;width:300px;height:300px;margin:0 auto 24px">
+      <div id="supplyWheel" style="width:300px;height:300px;border-radius:50%;position:relative;border:4px solid var(--primary);box-shadow:0 0 30px rgba(0,212,255,.25);transition:transform 4s cubic-bezier(.17,.67,.12,.99)"></div>
+      <div style="position:absolute;top:-12px;left:50%;transform:translateX(-50%);font-size:1.8rem;filter:drop-shadow(0 2px 4px rgba(0,0,0,.5))">▼</div>
+    </div>
+    <button id="supplySpinBtn" onclick="spinSupplyWheel()" style="padding:14px 40px;background:var(--primary);color:#000;border:none;border-radius:8px;font-size:1rem;font-weight:700;cursor:pointer;transition:opacity .2s" onmouseenter="this.style.opacity='.85'" onmouseleave="this.style.opacity='1'">Spin Now!</button>
+    <p id="supplySpinCooldown" style="color:var(--muted);font-size:.85rem;margin-top:10px"></p>
+  </div>
+</section>
+<div class="tip-modal-overlay" id="supplySpinModal" onclick="if(event.target===this)closeSupplySpinModal()" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:9999;align-items:center;justify-content:center">
+  <div style="background:var(--card);border:1px solid var(--border);border-radius:16px;padding:40px;text-align:center;max-width:400px;margin:20px">
+    <div style="font-size:3rem;margin-bottom:16px">🎉</div>
+    <h3 style="font-size:1.3rem;margin-bottom:8px">You Won!</h3>
+    <p id="supplyPrizeName" style="color:var(--primary);font-size:1.2rem;font-weight:700;margin-bottom:20px"></p>
+    <a id="supplyPrizeLink" href="#" target="_blank" rel="noopener" style="display:inline-block;background:var(--primary);color:#000;padding:12px 30px;border-radius:8px;font-weight:700;text-decoration:none;margin-bottom:12px;transition:opacity .2s" onmouseenter="this.style.opacity='.85'" onmouseleave="this.style.opacity='1'">Claim Prize</a>
+    <br><button onclick="closeSupplySpinModal()" style="background:none;border:none;color:var(--muted);cursor:pointer;font-size:.9rem;margin-top:8px">Close</button>
+  </div>
+</div>
+<script>
+(function(){
+  var SUPPLY_PRIZES=[
+    {label:'Free Sleeve Pack',url:'https://www.amazon.com/dp/B07CQGQK5M?tag=spunk01-20',color:'#00D4FF'},
+    {label:'Card Grading Guide',url:'https://spunk.codes/exclusive-tools.html',color:'#FFD700'},
+    {label:'10% Off Supplies',url:'#card-supplies',color:'#22c55e'},
+    {label:'Try Again',url:'',color:'#555'},
+    {label:'Free Top Loaders',url:'https://www.amazon.com/dp/B000Y3XKGG?tag=spunk01-20',color:'#a855f7'},
+    {label:'SPUNK Premium Tool',url:'https://spunk.codes/exclusive-tools.html',color:'#FF6B35'},
+    {label:'Try Again',url:'',color:'#444'},
+    {label:'Card Storage Box',url:'https://www.amazon.com/dp/B002KDNAU2?tag=spunk01-20',color:'#ec4899'}
+  ];
+  var segCount=SUPPLY_PRIZES.length;
+  var segAngle=360/segCount;
+
+  function buildSupplyWheel(){
+    var w=document.getElementById('supplyWheel');
+    var stops=SUPPLY_PRIZES.map(function(p,i){
+      var s=(i/segCount)*100;var e=((i+1)/segCount)*100;
+      return p.color+' '+s+'% '+e+'%';
+    }).join(', ');
+    w.style.background='conic-gradient(from -22.5deg, '+stops+')';
+    w.innerHTML='';
+    for(var i=0;i<segCount;i++){
+      var angle=(segAngle*i)+(segAngle/2)-90;
+      var rad=angle*Math.PI/180;
+      var x=50+35*Math.cos(rad);
+      var y=50+35*Math.sin(rad);
+      var lb=document.createElement('div');
+      lb.style.cssText='position:absolute;left:'+x+'%;top:'+y+'%;transform:translate(-50%,-50%) rotate('+(angle+90)+'deg);font-size:.55rem;font-weight:800;color:#000;text-align:center;line-height:1.1;width:65px;pointer-events:none;text-shadow:0 0 2px rgba(255,255,255,.3)';
+      lb.textContent=SUPPLY_PRIZES[i].label;
+      w.appendChild(lb);
+    }
+  }
+
+  function checkSupplyCooldown(){
+    var ls=localStorage.getItem('sellparty_supplyLastSpin');
+    var btn=document.getElementById('supplySpinBtn');
+    var cd=document.getElementById('supplySpinCooldown');
+    if(!ls){btn.disabled=false;cd.textContent='';return;}
+    var rem=(24*60*60*1000)-(Date.now()-parseInt(ls));
+    if(rem<=0){btn.disabled=false;cd.textContent='';}
+    else{btn.disabled=true;var h=Math.floor(rem/3600000);var m=Math.floor((rem%3600000)/60000);cd.textContent='Next spin in '+h+'h '+m+'m';}
+  }
+
+  window.spinSupplyWheel=function(){
+    var btn=document.getElementById('supplySpinBtn');
+    var ls=localStorage.getItem('sellparty_supplyLastSpin');
+    if(ls&&(Date.now()-parseInt(ls))<24*60*60*1000){checkSupplyCooldown();return;}
+    btn.disabled=true;
+    var w=document.getElementById('supplyWheel');
+    var pi=Math.floor(Math.random()*segCount);
+    var pa=segAngle*pi+segAngle/2;
+    var extra=360*(5+Math.floor(Math.random()*3));
+    var total=extra+(360-pa);
+    w.style.transition='none';w.style.transform='rotate(0deg)';
+    w.offsetHeight;
+    w.style.transition='transform 4s cubic-bezier(.17,.67,.12,.99)';
+    w.style.transform='rotate('+total+'deg)';
+    setTimeout(function(){
+      var prize=SUPPLY_PRIZES[pi];
+      localStorage.setItem('sellparty_supplyLastSpin',Date.now().toString());
+      document.getElementById('supplyPrizeName').textContent=prize.label;
+      var modal=document.getElementById('supplySpinModal');
+      var link=document.getElementById('supplyPrizeLink');
+      if(prize.url){
+        link.href=prize.url;link.style.display='inline-block';link.textContent='Claim Prize';
+      }else{
+        link.style.display='none';
+      }
+      modal.style.display='flex';
+      trackEvent('supply_spin',{prize:prize.label});
+      checkSupplyCooldown();
+    },4200);
+  };
+
+  window.closeSupplySpinModal=function(){document.getElementById('supplySpinModal').style.display='none';};
+
+  document.addEventListener('DOMContentLoaded',function(){
+    buildSupplyWheel();checkSupplyCooldown();
+    setInterval(checkSupplyCooldown,60000);
+  });
+})();
+</script>
+
+<!-- Cross-links & Auto-content -->
+<section style="padding:40px 0;text-align:center">
+  <div class="container">
+    <p style="color:var(--muted);font-size:.85rem;margin-bottom:12px">Part of the <a href="https://spunk.codes" target="_blank" style="color:var(--primary)">SPUNK LLC</a> network</p>
+    <div style="display:flex;flex-wrap:wrap;gap:10px;justify-content:center">
+      <a href="https://spunk.codes" target="_blank" style="background:var(--card);border:1px solid var(--border);padding:8px 16px;border-radius:20px;font-size:.8rem;color:var(--text);text-decoration:none;transition:border-color .2s" onmouseenter="this.style.borderColor='var(--primary)'" onmouseleave="this.style.borderColor='var(--border)'">Spunk.Codes — 290+ Free Tools</a>
+      <a href="https://spunk.bet" target="_blank" style="background:var(--card);border:1px solid var(--border);padding:8px 16px;border-radius:20px;font-size:.8rem;color:var(--text);text-decoration:none;transition:border-color .2s" onmouseenter="this.style.borderColor='var(--primary)'" onmouseleave="this.style.borderColor='var(--border)'">Spunk.Bet — Free Crypto Casino</a>
+      <a href="https://predict.horse" target="_blank" style="background:var(--card);border:1px solid var(--border);padding:8px 16px;border-radius:20px;font-size:.8rem;color:var(--text);text-decoration:none;transition:border-color .2s" onmouseenter="this.style.borderColor='var(--primary)'" onmouseleave="this.style.borderColor='var(--border)'">Predict Network — 18 Prediction Markets</a>
+    </div>
+  </div>
+</section>
+<script src="https://spunk.codes/auto-content.js" defer></script>
 
 <!-- Footer -->
 <footer class="footer">
